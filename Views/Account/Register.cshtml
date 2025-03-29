@@ -1,0 +1,25 @@
+﻿@model MobileShopInMVC.Models.Register;
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>Register</h2>
+
+<form method="post" action="/Account/Register">
+    <label>Name:</label>
+    <input type="text" name="Name" required />
+
+    <label>Email:</label>
+    <input type="email" name="Email" required />
+
+    <label>Password:</label>
+    <input type="password" name="Password" required />
+
+    <label>Role:</label>
+    <select name="Role">
+        <option value="User">User</option>
+        <option value="Admin">Admin</option>
+    </select>
+
+    <button type="submit">Register</button>
+</form>

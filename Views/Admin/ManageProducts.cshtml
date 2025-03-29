@@ -1,0 +1,48 @@
+﻿@model List<MobileShopInMVC.Models.Product>
+
+@{
+    ViewData["Title"] = "Manage Products"; 
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center">Manage Products</h2>
+
+<div class="container mt-4">
+    <table class="table table-hover table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.ProductId</td>
+                    <td>@product.Name</td>
+                    <td>@product.Description</td>
+                    <td>@product.Price.ToString("C")</td>
+                    <td>
+                        <img src="@product.ImageUrl" alt="Product Image" width="50" height="50" class="img-thumbnail" />
+                    </td>
+                    <td>@product.CategoryName</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@product.ProductId" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@product.ProductId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+                        <a asp-action="Details" asp-route-id="@product.ProductId" class="btn btn-info btn-sm">View</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="text-center mt-3">
+        <a asp-action="Create" class="btn btn-success">Add New Product</a>
+    </div>
+</div>

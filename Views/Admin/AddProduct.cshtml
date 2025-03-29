@@ -1,0 +1,95 @@
+﻿@model MobileShopInMVC.Models.Product
+
+@{
+    ViewData["Title"] = "Add Product";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<style>
+    body {
+        background-color: #0a0a0a;
+        font-family: Arial, sans-serif;
+        color: #fff;
+        text-align: center;
+    }
+
+    h2 {
+        color: #00ffea;
+        text-shadow: 0 0 10px #00ffea, 0 0 20px #00ffea;
+    }
+
+    form {
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        width: 50%;
+        margin: auto;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #00ffea;
+    }
+
+    label {
+        display: block;
+        font-size: 18px;
+        margin: 10px 0 5px;
+        text-shadow: 0 0 5px #fff;
+    }
+
+    input, textarea, select {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 15px;
+        border: none;
+        border-radius: 5px;
+        background: #222;
+        color: #00ffea;
+        box-shadow: 0 0 5px #00ffea;
+    }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 10px #ff00ff;
+        }
+
+    button {
+        background: #ff00ff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+        box-shadow: 0 0 10px #ff00ff;
+        transition: 0.3s;
+    }
+
+        button:hover {
+            background: #00ffea;
+            box-shadow: 0 0 15px #00ffea, 0 0 25px #ff00ff;
+        }
+
+</style>
+<h2>Add Product</h2>
+
+<form method="post" action="/Product/Add" enctype="multipart/form-data">
+    <label>Name:</label>
+    <input type="text" name="Name" required />
+
+    <label>Description:</label>
+    <textarea name="Description" required></textarea>
+
+    <label>Price:</label>
+    <input type="number" name="Price" step="0.01" required />
+
+    <label>Image:</label>
+    <input type="file" name="ImageUrl" required />
+
+    <label>Category:</label>
+    <select name="CategoryId" required>
+        @foreach (var category in ViewBag.Categories)
+        {
+            <option value="@category.CategoryId">@category.Name</option>
+        }
+    </select>
+
+    <button type="submit">Add Product</button>
+</form>

@@ -1,0 +1,42 @@
+﻿@model List<MobileShopInMVC.Models.Payment>
+@{
+    ViewData["Title"] = "Manage Payments";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Manage Payments</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Payment ID</th>
+            <th>Order ID</th>
+            <th>Payment Method</th>
+            <th>Transaction ID</th>
+            <th>Status</th>
+            <th>Paid Amount</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var payment in Model)
+        {
+            <tr>
+                <td>@payment.PaymentId</td>
+                <td>@payment.OrderId</td>
+                <td>@payment.PaymentMethod</td>
+                <td>@(string.IsNullOrEmpty(payment.TransactionId) ? "N/A" : payment.TransactionId)</td>
+                <td>@payment.Status</td>
+                <td>@payment.PaidAmount</td>
+                <td>@payment.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Payment", new { id = payment.PaymentId })" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="@Url.Action("Delete", "Payment", new { id = payment.PaymentId })" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Payment")" class="btn btn-primary">Add New Payment</a>

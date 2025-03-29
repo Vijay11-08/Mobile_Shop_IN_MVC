@@ -1,0 +1,35 @@
+﻿@model MobileShopInMVC.Models.Product
+@{
+   
+    ViewData["Title"] = "Edit Product";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Edit Product</h2>
+
+<form method="post" action="/Product/Edit" enctype="multipart/form-data">
+    <input type="hidden" name="ProductId" value="@Model.ProductId" />
+
+    <label>Name:</label>
+    <input type="text" name="Name" value="@Model.Name" required />
+
+    <label>Description:</label>
+    <textarea name="Description" required>@Model.Description</textarea>
+
+    <label>Price:</label>
+    <input type="number" name="Price" value="@Model.Price" step="0.01" required />
+
+    <label>Image:</label>
+    <input type="file" name="ImageUrl" />
+    <img src="@Model.ImageUrl" alt="Current Image" width="100" />
+
+    <label>Category:</label>
+    <select name="CategoryId" required>
+        @foreach (var category in ViewBag.Categories)
+        {
+            <option value="@category.CategoryId" selected="@(Model.CategoryId == category.CategoryId ? "selected" : null)">@category.Name</option>
+        }
+    </select>
+
+    <button type="submit">Update Product</button>
+</form>

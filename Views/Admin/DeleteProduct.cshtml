@@ -1,0 +1,15 @@
+﻿@model MobileShopInMVC.Models.Product
+@{
+    ViewData["Title"] = "Delete Product";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Delete Product</h2>
+
+<p>Are you sure you want to delete the product "@Model.Name"?</p>
+
+<form method="post" action="/Product/Delete">
+    <input type="hidden" name="ProductId" value="@Model.ProductId" />
+    <button type="submit">Yes, Delete</button>
+    <a href="/Product/List">Cancel</a>
+</form>
