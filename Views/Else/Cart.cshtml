@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<h2>Shopping Cart</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="cart-items">
+        <!-- Products will be dynamically added here -->
+    </tbody>
+</table>
+
+<button onclick="clearCart()">Clear Cart</button>
+<button onclick="proceedToCheckout()">Proceed to Checkout</button>
+
+<script>
+    function loadCart() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let cartTable = document.getElementById("cart-items");
+        cartTable.innerHTML = "";
+
+        cart.forEach((product, index) => {
+            cartTable.innerHTML += `
+                <tr>
+                    <td>${product.name}</td>
+                    <td><img src="${product.image}" width="50"></td>
+                    <td>$${product.price.toFixed(2)}</td>
+                    <td>${product.quantity}</td>
+                    <td>$${(product.price * product.quantity).toFixed(2)}</td>
+                    <td><button onclick="removeFromCart(${index})">Remove</button></td>
+                </tr>`;
+        });
+    }
+
+    function removeFromCart(index) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        loadCart();
+    }
+
+    function clearCart() {
+        localStorage.removeItem("cart");
+        loadCart();
+    }
+
+    function proceedToCheckout() {
+        alert("Redirecting to checkout...");
+        window.location.href = "/Checkout"; // Replace with your actual checkout page
+    }
+
+    window.onload = loadCart;
+</script>

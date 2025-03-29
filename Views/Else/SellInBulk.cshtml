@@ -1,0 +1,197 @@
+﻿@{
+    ViewData["Title"] = "Sell in Bulk";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Repair Services</title>
+    <link rel="stylesheet" href="repair.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        /* Header */
+        .repair-header {
+            text-align: center;
+            background: #ff6600;
+            color: white;
+            padding: 40px 0;
+        }
+
+            .repair-header h1 {
+                margin: 0;
+                font-size: 2.5rem;
+            }
+
+            .repair-header p {
+                font-size: 1.2rem;
+            }
+
+        /* Repair Container */
+        .repair-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 50px;
+            flex-wrap: wrap;
+        }
+
+        .repair-info {
+            max-width: 50%;
+        }
+
+            .repair-info h2 {
+                font-size: 2rem;
+                color: #222;
+            }
+
+            .repair-info p {
+                font-size: 1.1rem;
+            }
+
+            .repair-info ul {
+                list-style: none;
+                padding: 0;
+            }
+
+                .repair-info ul li {
+                    font-size: 1rem;
+                    margin: 10px 0;
+                }
+
+        /* Repair Image */
+        .repair-image img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Button */
+        .btn-repair {
+            display: inline-block;
+            background: #ff6600;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 15px;
+        }
+
+            .btn-repair:hover {
+                background: #e55b00;
+            }
+
+        /* Steps Section */
+        .repair-process {
+            text-align: center;
+            padding: 50px;
+            background: white;
+        }
+
+            .repair-process h2 {
+                font-size: 2rem;
+                color: #222;
+            }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .step {
+            width: 250px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+            .step img {
+                width: 100px;
+                height: auto;
+            }
+
+            .step h3 {
+                margin: 10px 0;
+                font-size: 1.3rem;
+            }
+
+            .step p {
+                font-size: 1rem;
+                color: #666;
+            }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #222;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="repair-header">
+        <h1>Repair Your Device</h1>
+        <p>Quick & Affordable Repair Services for Phones, Laptops, & More</p>
+    </header>
+
+    <section class="repair-container">
+        <div class="repair-info">
+            <h2>Why Choose Us?</h2>
+            <p>We offer fast, reliable, and affordable repairs for a wide range of electronic devices.</p>
+            <ul>
+                <li>✔ Certified Technicians</li>
+                <li>✔ Fast Turnaround Time</li>
+                <li>✔ High-Quality Parts</li>
+                <li>✔ Warranty on Repairs</li>
+            </ul>
+            <button class="btn-repair">Get a Repair Quote</button>
+        </div>
+        <div class="repair-image">
+            <img src="repair-image.jpg" alt="Device Repair">
+        </div>
+    </section>
+
+    <section class="repair-process">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <img src="step1.png" alt="Step 1">
+                <h3>1. Contact Us</h3>
+                <p>Describe the issue & get an estimate for repair.</p>
+            </div>
+            <div class="step">
+                <img src="step2.png" alt="Step 2">
+                <h3>2. Send Your Device</h3>
+                <p>Ship or drop off your device at our repair center.</p>
+            </div>
+            <div class="step">
+                <img src="step3.png" alt="Step 3">
+                <h3>3. Quick Fix</h3>
+                <p>Our experts repair your device with quality parts.</p>
+            </div>
+            <div class="step">
+                <img src="step4.png" alt="Step 4">
+                <h3>4. Get It Back</h3>
+                <p>Receive your fully repaired device in no time.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+﻿@model MobileShopInMVC.Models.Register
+
+@{
+    ViewData["Title"] = "Delete User";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Delete User</h2>
+<p>Are you sure you want to delete @Model.Name?</p>
+
+<form asp-action="DeleteUser" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="ManageUsers" class="btn btn-secondary">Cancel</a>
+</form>

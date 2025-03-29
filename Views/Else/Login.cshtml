@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "User Login";
+}
+<h2>User Login</h2>
+@if (TempData["Error"] != null)
+{
+    <p style="color:red;">@TempData["Error"]</p>
+}
+<form method="post" action="/Account/Login">
+    <label>Username:</label>
+    <input type="text" name="username" required />
+    <label>Password:</label>
+    <input type="password" name="password" required />
+    <button type="submit">Login</button>
+</form>

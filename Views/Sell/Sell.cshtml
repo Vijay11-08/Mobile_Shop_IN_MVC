@@ -1,0 +1,353 @@
+﻿@{
+    ViewData["Title"] = "Sell Used Phones Online - Like Zone Mobile Shop";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+        }
+
+        p {
+            text-align: center;
+            color: #666;
+        }
+
+        .accordion-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .accordion-button {
+            background: #f9f9f9;
+            color: #333;
+            font-weight: bold;
+        }
+
+            .accordion-button:not(.collapsed) {
+                background: #ff6600;
+                color: white;
+            }
+
+        .accordion-body {
+            background: #fff;
+            padding: 15px;
+            color: #444;
+        }
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+        }
+
+        p {
+            text-align: center;
+            color: #666;
+        }
+
+        /* Search Bar */
+        .input-group {
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+            .input-group input {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                padding: 10px;
+            }
+
+            .input-group button {
+                background-color: #ff6600;
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+                .input-group button:hover {
+                    background-color: #e55b00;
+                }
+
+        /* Category Grid */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .category-card {
+            width: 300px;
+            background: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+            .category-card:hover {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            .category-card img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 10px;
+            }
+
+            .category-card h5 {
+                font-size: 1.2rem;
+                margin: 10px 0;
+                color: #333;
+            }
+
+            .category-card a {
+                display: inline-block;
+                text-decoration: none;
+                background: #ff6600;
+                color: white;
+                padding: 10px 15px;
+                border-radius: 5px;
+                margin-top: 10px;
+                font-weight: bold;
+            }
+
+                .category-card a:hover {
+                    background: #e55b00;
+                }
+
+        /* Can't Find Your Device */
+        .text-center a {
+            color: #ff6600;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            .text-center a:hover {
+                text-decoration: underline;
+            }
+
+        /* FAQ Section */
+        .accordion-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .accordion-button {
+            background: #f9f9f9;
+            color: #333;
+            font-weight: bold;
+        }
+
+            .accordion-button:not(.collapsed) {
+                background: #ff6600;
+                color: white;
+            }
+
+        .accordion-body {
+            background: #fff;
+            padding: 15px;
+            color: #444;
+        }
+
+        /* Contact Support */
+        .text-center p a {
+            color: #ff6600;
+            font-weight: bold;
+        }
+
+            .text-center p a:hover {
+                text-decoration: underline;
+            }
+
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <h2 class="text-center">Sell Used Phones Online for Cash!</h2>
+        <p class="text-center">Find the device you’d like to trade in and get instant cash offers.</p>
+
+        <div class="input-group mb-4">
+            <input type="text" class="form-control" placeholder="Search devices..." aria-label="Search devices">
+            <button class="btn btn-primary" type="button">Search</button>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="category-card">
+                    <img src="~/Image/sa52.jpg" alt="Sell iPhone">
+                    <h5>Sell iPhone</h5>
+                    <a href="#" class="btn btn-primary">Sell Now</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="category-card">
+                    <img src="~/Image/sa52.jpg" alt="Sell iPhone">
+                    <h5>Sell iPhone</h5>
+                    <a href="#" class="btn btn-primary">Sell Now</a>
+                </div>
+            </div> 
+            <div class="col-md-4">
+                <div class="category-card">
+                    <img src="~/Image/sa52.jpg" alt="Sell iPhone">
+                    <h5>Sell Realme</h5>
+                    <a href="#" class="btn btn-primary">Sell Now</a>
+                </div>
+            </div> 
+            <div class="col-md-4">
+                <div class="category-card">
+                    <img src="~/Image/sa52.jpg" alt="Sell iPhone">
+                    <h5>Sell Oppo</h5>
+                    <a href="#" class="btn btn-primary">Sell Now</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="category-card">
+                    <img src="~/Image/sa52.jpg" alt="Sell Samsung">
+                    <h5>Sell Samsung</h5>
+                    <a href="#" class="btn btn-primary">Sell Now</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="category-card">
+                    <img src="~/Image/sa52.jpg" alt="Sell Android">
+                    <h5>Sell Android</h5>
+                    <a href="#" class="btn btn-primary">Sell Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <p>Can’t find your device? <a href="#">Click here</a></p>
+        </div>
+
+        <div class="container my-5">
+            <h2 class="text-success">FAQs & Tips for Buying Certified Devices</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            How can I shop for certified refurbished devices?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            Browse a range of iPhones, Samsung Galaxy, Google Pixel, iPads, MacBooks, and accessories.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            How do you ensure the quality of the devices?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            Every device undergoes a 30+ point inspection to ensure functionality and cosmetic quality.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            Do I get free shipping on my order?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            Yes! Enjoy free shipping on every order. We’ll provide updates throughout the process.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            Where can I start shopping?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            Click the button below to start browsing certified refurbished devices.<br>
+                            <a href="/Buy" class="btn btn-success mt-2">Start Shopping</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="text-center mt-4">
+            <p>Still have questions? <a href="#">Contact Support</a></p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.querySelector(".input-group input");
+            const searchButton = document.querySelector(".input-group button");
+            const categoryCards = document.querySelectorAll(".category-card");
+
+            function searchDevices() {
+                const query = searchInput.value.toLowerCase();
+
+                categoryCards.forEach(card => {
+                    const title = card.querySelector("h5").textContent.toLowerCase();
+
+                    if (title.includes(query)) {
+                        card.parentElement.style.display = "block";
+                    } else {
+                        card.parentElement.style.display = "none";
+                    }
+                });
+            }
+
+            searchButton.addEventListener("click", searchDevices);
+            searchInput.addEventListener("keyup", searchDevices);
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

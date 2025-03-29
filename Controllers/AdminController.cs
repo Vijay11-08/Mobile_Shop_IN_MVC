@@ -20,10 +20,69 @@ namespace MobileShopInMVC.Controllers
 
         public AdminController()
         {
+
             _categoryModel = new Category();
         }
 
-       
+        // GET: Edit User
+        public IActionResult EditUser(int id)
+        {
+            Register user = new Register().getData(id.ToString()).FirstOrDefault();
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.RoleList = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "Admin", Text = "Admin" },
+        new SelectListItem { Value = "User", Text = "User" }
+    };
+
+            return View(user);
+        }
+        // POST: Edit User
+        [HttpPost]
+        public IActionResult EditUser(Register user)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingUser = _context.Registers.FirstOrDefault(u => u.Id == user.Id);
+                if (existingUser != null)
+                {
+                    existingUser.Name = user.Name;
+                    existingUser.Email = user.Email;
+                    existingUser.Role = user.Role;
+                    _context.SaveChanges();
+                    return RedirectToAction("ManageUsers");
+                }
+            }
+            return View(user);
+        }
+
+        // GET: Delete User Confirmation
+        public IActionResult DeleteUser(int id)
+        {
+            var user = _context.Registers.FirstOrDefault(u => u.Id == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
+        }
+
+        // POST: Confirm User Deletion
+        [HttpPost, ActionName("DeleteUser")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var user = _context.Registers.FirstOrDefault(u => u.Id == id);
+            if (user != null)
+            {
+                _context.Registers.Remove(user);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("ManageUsers");
+        }
 
         // Add Category (GET)
         public IActionResult AddCategory()

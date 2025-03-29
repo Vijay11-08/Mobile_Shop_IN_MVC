@@ -1,0 +1,23 @@
+﻿@model MobileShopInMVC.Models.Register
+
+@{
+    ViewData["Title"] = "Edit User";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+<h2>Edit User</h2>
+<form asp-action="EditUser" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label>Name</label>
+        <input asp-for="Name" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Role</label>
+        <select asp-for="Role" asp-items="ViewBag.RoleList" class="form-control"></select>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
