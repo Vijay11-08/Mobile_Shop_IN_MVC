@@ -1,0 +1,235 @@
+﻿@{
+    ViewData["Title"] = "Clearance Deals - Like Zone Mobile Shop";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clearance Sale</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .filter-group label {
+            display: block;
+            margin: 8px 0;
+            font-size: 16px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .filter-group input {
+            margin-right: 8px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .main-content h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: red;
+        }
+
+        .price span {
+            color: #ff6600;
+        }
+
+        .product button {
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .product button:hover {
+            background-color: #cc5200;
+        }
+
+        /* Responsive Design */
+        @@media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @@media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sidebar {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Sidebar with Filters -->
+        <aside class="sidebar">
+            <h2>Filters</h2>
+            <div class="filter-group">
+                <label><input type="checkbox" name="filter" value="Laptop" onclick="filterProducts()"> Laptop</label>
+                <label><input type="checkbox" name="filter" value="Smartphone" onclick="filterProducts()"> Smartphone</label>
+                <label><input type="checkbox" name="filter" value="Accessories" onclick="filterProducts()"> Accessories</label>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>Clearance Sale</h1>
+            <div class="products-grid">
+                <div class="product" data-name="Laptop">
+                    <img src="~/Image/x_phone.jpg" alt="Laptop">
+                    <h3>Discounted Laptop</h3>
+                    <p class="price">Now Only <span>$499.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product" data-name="Smartphone">
+                    <img src="~/Image/x_phone.jpg" alt="Smartphone">
+                    <h3>Clearance Smartphone</h3>
+                    <p class="price">Now Only <span>$299.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product" data-name="Accessories">
+                    <img src="~/Image/x_phone.jpg" alt="Accessories">
+                    <h3>Accessories Bundle</h3>
+                    <p class="price">Now Only <span>$49.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product" data-name="Laptop">
+                    <img src="~/Image/x_phone.jpg" alt="Laptop">
+                    <h3>Discounted Laptop</h3>
+                    <p class="price">Now Only <span>$499.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product" data-name="Smartphone">
+                    <img src="~/Image/x_phone.jpg" alt="Smartphone">
+                    <h3>Clearance Smartphone</h3>
+                    <p class="price">Now Only <span>$299.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product" data-name="Accessories">
+                    <img src="~/Image/x_phone.jpg" alt="Accessories">
+                    <h3>Accessories Bundle</h3>
+                    <p class="price">Now Only <span>$49.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product" data-name="Laptop">
+                    <img src="~/Image/x_phone.jpg" alt="Laptop">
+                    <h3>Discounted Laptop</h3>
+                    <p class="price">Now Only <span>$499.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product" data-name="Smartphone">
+                    <img src="~/Image/x_phone.jpg" alt="Smartphone">
+                    <h3>Clearance Smartphone</h3>
+                    <p class="price">Now Only <span>$299.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product" data-name="Accessories">
+                    <img src="~/Image/x_phone.jpg" alt="Accessories">
+                    <h3>Accessories Bundle</h3>
+                    <p class="price">Now Only <span>$49.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function filterProducts() {
+            const selectedFilters = new Set(
+                [...document.querySelectorAll("input[name='filter']:checked")] 
+                    .map(input => input.value)
+            );
+            document.querySelectorAll(".product").forEach(product => {
+                product.style.display = 
+                    selectedFilters.size === 0 || selectedFilters.has(product.dataset.name) 
+                    ? "block" 
+                    : "none";
+            });
+        }
+    </script>
+</body>
+</html>

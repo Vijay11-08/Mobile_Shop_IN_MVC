@@ -1,0 +1,240 @@
+﻿@{
+    ViewData["Title"] = "Buy Accessories - Like Zone Mobile Shop";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Accessories</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .filter-group label {
+            display: block;
+            margin: 8px 0;
+            font-size: 16px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .filter-group input {
+            margin-right: 8px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .main-content h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: red;
+        }
+
+        .price span {
+            color: #ff6600;
+        }
+
+        .product button {
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .product button:hover {
+            background-color: #cc5200;
+        }
+
+        /* Responsive Design */
+        @@media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @@media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sidebar {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Sidebar with Filters -->
+        <aside class="sidebar">
+            <h2>Filters</h2>
+            <div class="filter-group">
+                <label><input type="checkbox" name="filter" value="AirPods" onclick="filterProducts()"> AirPods</label>
+                <label><input type="checkbox" name="filter" value="MagSafe Charger" onclick="filterProducts()"> MagSafe Charger</label>
+                <label><input type="checkbox" name="filter" value="Apple Watch" onclick="filterProducts()"> Apple Watch</label>
+                <label><input type="checkbox" name="filter" value="iPad Keyboard" onclick="filterProducts()"> iPad Keyboard</label>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>Buy Accessories</h1>
+            <div class="products-grid">
+                <div class="product" data-name="AirPods">
+                    <img src="~/Image/i_buds.jpg" alt="AirPods">
+                    <h3>AirPods</h3>
+                    <p class="price">From <span>$199.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product" data-name="MagSafe Charger">
+                    <img src="~/Image/s_charger.jpg" alt="MagSafe Charger">
+                    <h3>MagSafe Charger</h3>
+                    <p class="price">From <span>$39.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product" data-name="Apple Watch">
+                    <img src="~/Image/o_charger.jpg" alt="Apple Watch">
+                    <h3>Apple Watch</h3>
+                    <p class="price">From <span>$399.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product" data-name="iPad Keyboard">
+                    <img src="~/Image/r_charger.jpg" alt="iPad Keyboard">
+                    <h3>iPad Keyboard</h3>
+                    <p class="price">From <span>$149.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product" data-name="AirPods">
+                    <img src="~/Image/i_buds.jpg" alt="AirPods">
+                    <h3>AirPods</h3>
+                    <p class="price">From <span>$199.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product" data-name="MagSafe Charger">
+                    <img src="~/Image/s_charger.jpg" alt="MagSafe Charger">
+                    <h3>MagSafe Charger</h3>
+                    <p class="price">From <span>$39.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product" data-name="Apple Watch">
+                    <img src="~/Image/o_charger.jpg" alt="Apple Watch">
+                    <h3>Apple Watch</h3>
+                    <p class="price">From <span>$399.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product" data-name="iPad Keyboard">
+                    <img src="~/Image/r_charger.jpg" alt="iPad Keyboard">
+                    <h3>iPad Keyboard</h3>
+                    <p class="price">From <span>$149.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product" data-name="AirPods">
+                    <img src="~/Image/i_buds.jpg" alt="AirPods">
+                    <h3>AirPods</h3>
+                    <p class="price">From <span>$199.99</span></p>
+                    <button>Buy Now</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function filterProducts() {
+            let checkboxes = document.querySelectorAll("input[name='filter']:checked");
+            let selected = Array.from(checkboxes).map(cb => cb.value);
+            let products = document.querySelectorAll(".product");
+            
+            products.forEach(product => {
+                if (selected.length === 0 || selected.includes(product.getAttribute("data-name"))) {
+                    product.style.display = "block";
+                } else {
+                    product.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
