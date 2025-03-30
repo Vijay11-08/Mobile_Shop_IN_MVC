@@ -3,23 +3,69 @@
     ViewData["Title"] = "Register";
 }
 
-<h2>Register</h2>
+<h2 class="text-center">Register</h2>
 
-<form method="post" action="/Account/Register">
-    <label>Name:</label>
-    <input type="text" name="Name" required />
+<style>
+    .register-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 
-    <label>Email:</label>
-    <input type="email" name="Email" required />
+    .register-box {
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 350px;
+    }
 
-    <label>Password:</label>
-    <input type="password" name="Password" required />
+        .register-box label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
 
-    <label>Role:</label>
-    <select name="Role">
-        <option value="User">User</option>
-        <option value="Admin">Admin</option>
-    </select>
+        .register-box input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
 
-    <button type="submit">Register</button>
-</form>
+        .register-box button {
+            width: 100%;
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            .register-box button:hover {
+                background: #218838;
+            }
+</style>
+
+<div class="register-container">
+    <div class="register-box">
+        <form method="post" action="/Account/Register">
+            <label>Name:</label>
+            <input type="text" name="Name" required />
+
+            <label>Email:</label>
+            <input type="email" name="Email" required />
+
+            <label>Password:</label>
+            <input type="password" name="Password" required />
+
+            <input type="hidden" name="Role" value="User" />
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</div>

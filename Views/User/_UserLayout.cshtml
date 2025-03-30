@@ -72,21 +72,6 @@
                                 <li><a class="dropdown-item" asp-controller="Sell" asp-action="SellOtheritem">SellOtheritem</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Sell" asp-action="Sell">Sell Page</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Else" asp-action="SellInBulk">Sell in Bulk</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="repairDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
-                            <ul class="dropdown-menu" aria-labelledby="repairDropdown">
-                                <li><a class="dropdown-item" asp-controller="More" asp-action="HowItWorks">How It Works</a></li>
-                                <li><a class="dropdown-item" asp-controller="More" asp-action="AboutUs">About Us</a></li>
-                                <li><a class="dropdown-item" asp-controller="More" asp-action="ContactUs">Contact Us</a></li>
-                                <li><a class="dropdown-item" asp-controller="More" asp-action="FAQs">FAQs</a></li>
-                            </ul>
-                        </li>
                     </ul>
 
                     <ul class="navbar-nav">
@@ -132,6 +117,3 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-
-
-

@@ -86,6 +86,28 @@ namespace MobileShopInMVC.Controllers
                 return View();
             }
         }
+        // GET: Forgot Password Page
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        // POST: Forgot Password Action
+        [HttpPost]
+        public IActionResult ForgotPassword(string Email)
+        {
+            var user = _registerModel.getData("").FirstOrDefault(u => u.Email == Email);
+            if (user != null)
+            {
+                // Here you can implement email sending logic for password reset
+                ViewBag.Message = "Password reset instructions have been sent to your email.";
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Email not found!";
+            }
+            return View();
+        }
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
