@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using MobileShopInMVC.Models;
 
 
@@ -11,6 +12,8 @@ namespace MobileShopInMVC.Controllers
         private readonly Category categoryModel = new Category();
         private readonly Product _productModel = new Product();
         private readonly Category _categoryModel;
+       
+
         // List Categories
         public IActionResult Index()
         {
@@ -24,38 +27,82 @@ namespace MobileShopInMVC.Controllers
             _categoryModel = new Category();
         }
 
+        private readonly string _connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MOBILESHOP;Integrated Security=True;";
+
+        // GET: Manage Users
+        public IActionResult ManageUsers()
+        {
+            List<Register> users = new List<Register>();
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Open();
+                string query = "SELECT * FROM Register";
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    users.Add(new Register
+                    {
+                        Id = (int)reader["Id"],
+                        Name = reader["Name"].ToString(),
+                        Email = reader["Email"].ToString(),
+                        Role = reader["Role"].ToString()
+                    });
+                }
+            }
+            return View(users);
+        }
+
         // GET: Edit User
         public IActionResult EditUser(int id)
         {
-            Register user = new Register().getData(id.ToString()).FirstOrDefault();
+            Register user = null;
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Open();
+                string query = "SELECT * FROM Register WHERE Id=@Id";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@Id", id);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    user = new Register
+                    {
+                        Id = (int)reader["Id"],
+                        Name = reader["Name"].ToString(),
+                        Email = reader["Email"].ToString(),
+                        Role = reader["Role"].ToString()
+                    };
+                }
+            }
             if (user == null)
             {
                 return NotFound();
             }
-
-            ViewBag.RoleList = new List<SelectListItem>
-    {
-        new SelectListItem { Value = "Admin", Text = "Admin" },
-        new SelectListItem { Value = "User", Text = "User" }
-    };
-
             return View(user);
         }
+
         // POST: Edit User
         [HttpPost]
         public IActionResult EditUser(Register user)
         {
             if (ModelState.IsValid)
             {
-                var existingUser = _context.Registers.FirstOrDefault(u => u.Id == user.Id);
-                if (existingUser != null)
+                using (SqlConnection con = new SqlConnection(_connectionString))
                 {
-                    existingUser.Name = user.Name;
-                    existingUser.Email = user.Email;
-                    existingUser.Role = user.Role;
-                    _context.SaveChanges();
-                    return RedirectToAction("ManageUsers");
+                    con.Open();
+                    string query = "UPDATE Register SET Name=@Name, Email=@Email, Role=@Role WHERE Id=@Id";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@Name", user.Name);
+                    cmd.Parameters.AddWithValue("@Email", user.Email);
+                    cmd.Parameters.AddWithValue("@Role", user.Role);
+                    cmd.Parameters.AddWithValue("@Id", user.Id);
+
+                    cmd.ExecuteNonQuery();
                 }
+                return RedirectToAction("ManageUsers");
             }
             return View(user);
         }
@@ -63,7 +110,26 @@ namespace MobileShopInMVC.Controllers
         // GET: Delete User Confirmation
         public IActionResult DeleteUser(int id)
         {
-            var user = _context.Registers.FirstOrDefault(u => u.Id == id);
+            Register user = null;
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Open();
+                string query = "SELECT * FROM Register WHERE Id=@Id";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@Id", id);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    user = new Register
+                    {
+                        Id = (int)reader["Id"],
+                        Name = reader["Name"].ToString(),
+                        Email = reader["Email"].ToString(),
+                        Role = reader["Role"].ToString()
+                    };
+                }
+            }
             if (user == null)
             {
                 return NotFound();
@@ -75,11 +141,13 @@ namespace MobileShopInMVC.Controllers
         [HttpPost, ActionName("DeleteUser")]
         public IActionResult DeleteConfirmed(int id)
         {
-            var user = _context.Registers.FirstOrDefault(u => u.Id == id);
-            if (user != null)
+            using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                _context.Registers.Remove(user);
-                _context.SaveChanges();
+                con.Open();
+                string query = "DELETE FROM Register WHERE Id=@Id";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.ExecuteNonQuery();
             }
             return RedirectToAction("ManageUsers");
         }
@@ -154,14 +222,6 @@ namespace MobileShopInMVC.Controllers
         public IActionResult Dashboard()
         {
             return View();
-        }
-
-        // Manage Users
-        public IActionResult ManageUsers()
-        {
-            Register register = new Register();
-            List<Register> users = register.getData(""); // Fetch all users
-            return View(users);
         }
 
         // Manage Categories

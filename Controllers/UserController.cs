@@ -43,5 +43,29 @@ namespace MobileShopInMVC.Controllers
         {
             return View();
         }
+        public IActionResult SellIphone()
+        {
+            return View();
+        }
+        public IActionResult SellSamsung()
+        {
+            return View();
+        }
+        public IActionResult SellAndroid()
+        {
+            return View();
+        }
+        public IActionResult SellSmartwatch()
+        {
+            return View();
+        }
+        public IActionResult SellIpad()
+        {
+            return View();
+        }
+        public IActionResult SellOtheritem()
+        {
+            return View();
+        }
     }
 }
