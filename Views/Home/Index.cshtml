@@ -1,8 +1,141 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿
+@{
+    ViewData["Title"] = "Buy and Sell Phones Online";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+       
+
+        .hero {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            padding: 40px 0;
+        }
+
+        .buy-section, .sell-section {
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .buy-section {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .sell-section {
+            background-color: #ff7b00;
+            color: white;
+        }
+
+        button {
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .sell-info {
+            padding: 30px;
+        }
+
+        .device-filter {
+            background-color: #ff7b00;
+            color: white;
+            padding: 20px;
+            text-align: left;
+            width: 200px;
+            margin: auto;
+            border-radius: 10px;
+        }
+
+        .trade-in {
+            padding: 30px;
+        }
+
+        .device-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .device {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Buying and Selling Phones Online Has Never Been So Easy</h1>
+    </header>
+    <section class="hero">
+        <div class="buy-section">
+            <h2>Buy</h2>
+            <p>Certified Pre-Owned Devices</p>
+            <button>Start Shopping</button>
+        </div>
+        <div class="sell-section">
+            <h2>Sell</h2>
+            <p>Trade In Your Device for Cash</p>
+            <button>Start Selling</button>
+        </div>
+    </section>
+    <section class="sell-info">
+        <h2>Sell Your Phone for Cash <span>In Minutes</span></h2>
+        <p>Selling electronics online with SmartphonesPLUS is easy and safe...</p>
+    </section>
+    <aside class="device-filter">
+        <h3>Sell by Device Type:</h3>
+        <ul>
+            <li>Sell iPhone</li>
+            <li>Sell Samsung</li>
+            <li>Sell Android</li>
+            <li>Sell MacBook</li>
+            <li>Sell Smartwatch</li>
+            <li>Sell iPad / Tablet</li>
+        </ul>
+    </aside>
+    <section class="trade-in">
+        <h2>Most Popular Trade Ins</h2>
+        <div class="device-list">
+            <div class="device">
+                <h3>iPhone 12 Pro Max</h3>
+                <p>Up to $280</p>
+                <button>Start Selling</button>
+            </div>
+            <div class="device">
+                <h3>iPhone 11</h3>
+                <p>Up to $137</p>
+                <button>Start Selling</button>
+            </div>
+            <div class="device">
+                <h3>iPhone 6s</h3>
+                <p>Up to $4</p>
+                <button>Start Selling</button>
+            </div>
+        </div>
+    </section>
+   
+</body>
+</html>

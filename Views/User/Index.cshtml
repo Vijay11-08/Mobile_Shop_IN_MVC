@@ -1,5 +1,83 @@
 ﻿@{
     ViewData["Title"] = "User Panel";
 }
-<h2>Welcome to User Panel</h2>
-<a href="/Account/Login">Logout</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy & Sell Phones Online</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header class="bg-light p-3 text-center">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Mobile Shop</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Sell Phone</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Refurbished Phones</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <section class="text-center py-5">
+        <h1>Buying and Selling Phones Online Has Never Been So Easy</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Buy</h2>
+                    <img src="/images/buy-phone.png" class="img-fluid" alt="Buy Phone">
+                </div>
+                <div class="col-md-6">
+                    <h2>Sell</h2>
+                    <img src="/images/sell-phone.png" class="img-fluid" alt="Sell Phone">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container py-4">
+        <h2 class="text-center">Most Popular Trade-Ins</h2>
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <img src="/images/iphone12.png" class="img-fluid" alt="iPhone 12">
+                <p>iPhone 12</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="/images/iphone11.png" class="img-fluid" alt="iPhone 11">
+                <p>iPhone 11</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="/images/iphoneX.png" class="img-fluid" alt="iPhone X">
+                <p>iPhone X</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container py-4">
+        <h2 class="text-center">Buy Certified Refurbished Phones</h2>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <img src="/images/refurbished-phones.png" class="img-fluid" alt="Refurbished Phones">
+            </div>
+        </div>
+    </section>
+    
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2025 Mobile Shop. All rights reserved.</p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
