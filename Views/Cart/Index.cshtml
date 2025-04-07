@@ -1,0 +1,24 @@
+﻿<button id="rzp-button1">Pay with Razorpay</button>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    document.getElementById('rzp-button1').onclick = function (e) {
+        fetch('/Payment/CreateOrder?amount=1000')
+        .then(response => response.json())
+        .then(data => {
+            var options = {
+                "key": "rzp_test_x8tV5oSUixLmbV",
+                "amount": "1000",
+                "currency": "INR",
+                "name": "Like Zone Mobile Shop",
+                "order_id": data.orderId,
+                "handler": function (response) {
+                    alert('Payment successful! ' + response.razorpay_payment_id);
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        });
+        e.preventDefault();
+    };
+</script>

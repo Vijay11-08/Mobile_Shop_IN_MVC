@@ -4,12 +4,78 @@
     ViewData["Title"] = "Delete User";
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
 }
+<style>
+    body {
+        background-color: #0d0d0d;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+    }
 
-<h2>Delete User</h2>
-<p>Are you sure you want to delete @Model.Name?</p>
+    .container {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.9);
+        border-radius: 10px;
+        box-shadow: 0 0 20px #f00;
+    }
 
-<form asp-action="DeleteUser" method="post">
-    <input type="hidden" asp-for="Id" />
-    <button type="submit" class="btn btn-danger">Delete</button>
-    <a asp-action="ManageUsers" class="btn btn-secondary">Cancel</a>
-</form>
+    h2 {
+        font-size: 2rem;
+        text-shadow: 0 0 10px #f00;
+    }
+
+    p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        text-shadow: 0 0 5px #fff;
+    }
+
+    .btn-danger {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        background: linear-gradient(90deg, #f00, #900);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0 15px #f00;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .btn-danger:hover {
+            box-shadow: 0 0 25px #f00;
+            transform: scale(1.05);
+        }
+
+    .btn-secondary {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        background: linear-gradient(90deg, #888, #444);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0 15px #888;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .btn-secondary:hover {
+            box-shadow: 0 0 25px #888;
+            transform: scale(1.05);
+        }
+</style>
+
+<div class="container">
+    <h2>Delete User</h2>
+    <p>Are you sure you want to delete <strong>@Model.Name</strong>?</p>
+
+    <form asp-action="DeleteUser" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="ManageUsers" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
