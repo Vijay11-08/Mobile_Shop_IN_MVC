@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MobileShopInMVC.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Razorpay.Api;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

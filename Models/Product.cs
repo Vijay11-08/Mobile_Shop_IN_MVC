@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿//using Intuit.Ipp.Data;
+using Microsoft.Data.SqlClient;
 using System.Data;
 
 namespace MobileShopInMVC.Models
@@ -13,6 +14,9 @@ namespace MobileShopInMVC.Models
         public int CategoryId { get; set; } // Foreign Key
         public string CategoryName { get; set; } // For display purpose
 
+        public string PaymentId { get; set; }
+
+        //public PaymentStatusEnum PaymentStatus { get; set; } // ✅ Use Enum
         // Database Connection
         SqlConnection con = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MOBILESHOP;Integrated Security=True;");
 

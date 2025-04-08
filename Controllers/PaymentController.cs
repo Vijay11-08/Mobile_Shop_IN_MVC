@@ -1,24 +1,52 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MobileShopInMVC.Models;
+using MobileShopInMVC.Service;
 using Razorpay.Api;
 
 namespace MobileShopInMVC.Controllers
 {
     public class PaymentController : Controller
     {
-        private const string Key = "rzp_test_x8tV5oSUixLmbV";
-        private const string Secret = "fWH4faC9rEJ9StONJyc8ZXCc";
+        private readonly ILogger<PaymentController> _logger;
+        private readonly IPaymentService _service;
+        private IHttpContextAccessor _httpContextAccessor;
+        public PaymentController(ILogger<PaymentController> logger, IPaymentService service, IHttpContextAccessor httpContextAccessor)
+        {
+            _logger = logger;
+            _service = service;
+            _httpContextAccessor = httpContextAccessor;
+        }
+        public IActionResult Index()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ProcessRequestOrder(PaymentRequest _paymentRequest)
+        {
+            MerchantOrder _marchantOrder = await _service.ProcessMerchantOrder(_paymentRequest);
+            return View("Payment", _marchantOrder);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CompleteOrderProcess()
+        {
+            string PaymentMessage = await _service.CompleteOrderProcess(_httpContextAccessor);
+            if (PaymentMessage == "captured")
+            {
+                return RedirectToAction("Success");
+            }
+            else
+            {
+                return RedirectToAction("Failed");
+            }
+        }
+        public IActionResult Success()
+        {
+            return View();
+        }
 
-        public IActionResult CreateOrder(decimal amount)
+        public IActionResult Failed()
         {
-            RazorpayClient client = new RazorpayClient(Key, Secret);
-            Dictionary<string, object> options = new Dictionary<string, object>
-        {
-            { "amount", amount * 100 }, // Amount in paise
-            { "currency", "INR" },
-            { "receipt", "order_rcptid_11" }
-        };
-            Order order = client.Order.Create(options);
-            return Json(new { orderId = order["id"] });
+            return View();
         }
     }
 }

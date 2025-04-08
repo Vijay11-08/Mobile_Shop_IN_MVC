@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MobileShopInMVC.Models;
 
 namespace MobileShopInMVC.Controllers
 {
@@ -18,4 +19,4 @@ namespace MobileShopInMVC.Controllers
             return Json(new { message = "Product added to cart!" });
         }
     }
-    }
+}

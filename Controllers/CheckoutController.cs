@@ -29,18 +29,19 @@ namespace MobileShopInMVC.Controllers
 
             return View();
         }
-        public IActionResult PaymentSuccess(string paymentId, int orderId)
+        public IActionResult PaymentSuccess(int paymentId, int orderId )
         {
             var order = _context.Orders.FirstOrDefault(o => o.Id == orderId);
             if (order == null) return NotFound();
 
             order.Status = "Paid";
-            _context.Payments.Add(new Payment
+
+            _ = _context.Payments.Add(new Payment
             {
                 OrderId = orderId,
                 PaymentId = paymentId,
                 Amount = order.TotalAmount,
-                PaymentStatus = "Completed",
+                //PaymentStatus = "Completed",  // ✅ Fixed
                 PaymentDate = DateTime.Now
             });
 
@@ -48,6 +49,7 @@ namespace MobileShopInMVC.Controllers
 
             return RedirectToAction("Success");
         }
+
 
         public IActionResult Success()
         {

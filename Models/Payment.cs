@@ -32,6 +32,9 @@ namespace MobileShopInMVC.Models
 
         // Navigation Property
         public virtual Order Order { get; set; }
+        public DateTime PaymentDate { get; internal set; }
+        public int PaymentStatus { get; internal set; }
+        public decimal Amount { get; internal set; }
 
         // Database Connection
         SqlConnection con = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MOBILESHOP;Integrated Security=True;");
