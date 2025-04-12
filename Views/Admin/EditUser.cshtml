@@ -5,88 +5,32 @@
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
 }
 
-<style>
-    body {
-        background-color: #0d0d0d;
-        color: #ffffff;
-        font-family: 'Poppins', sans-serif;
-    }
-
-    .container {
-        max-width: 500px;
-        margin: 50px auto;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.9);
-        border-radius: 10px;
-        box-shadow: 0 0 20px #0ff;
-    }
-
-    h2 {
-        text-align: center;
-        font-size: 2rem;
-        text-shadow: 0 0 10px #0ff;
-    }
-
-    .form-group label {
-        font-size: 1.1rem;
-        text-shadow: 0 0 5px #0ff;
-    }
-
-    .form-control {
-        background-color: #222;
-        border: 1px solid #0ff;
-        color: #0ff;
-        padding: 10px;
-        font-size: 1rem;
-        border-radius: 5px;
-        box-shadow: 0 0 10px #0ff inset;
-    }
-
-        .form-control:focus {
-            outline: none;
-            box-shadow: 0 0 20px #0ff;
-        }
-
-    .btn-primary {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        font-size: 1.2rem;
-        background: linear-gradient(90deg, #00f, #0ff);
-        color: white;
-        border: none;
-        border-radius: 5px;
-        box-shadow: 0 0 15px #0ff;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-
-        .btn-primary:hover {
-            box-shadow: 0 0 25px #0ff;
-            transform: scale(1.05);
-        }
-</style>
-
-<div class="container">
-    <h2>Edit User</h2>
-    <form asp-action="EditUser" method="post">
-        <input type="hidden" asp-for="Id" />
-
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input asp-for="Name" class="form-control" id="name" required />
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white text-center">
+            <h3>Edit User</h3>
         </div>
+        <div class="card-body">
+            <form asp-action="EditUser" method="post">
+                <input type="hidden" asp-for="Id" />
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input asp-for="Email" class="form-control" id="email" required />
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input asp-for="Name" class="form-control" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input asp-for="Email" class="form-control" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Role</label>
+                    <select asp-for="Role" asp-items="ViewBag.RoleList" class="form-select"></select>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">Update</button>
+            </form>
         </div>
-
-        <div class="form-group">
-            <label for="role">Role</label>
-            <select asp-for="Role" asp-items="ViewBag.RoleList" class="form-control" id="role"></select>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Update</button>
-    </form>
+    </div>
 </div>

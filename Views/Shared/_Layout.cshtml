@@ -193,9 +193,19 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Else" asp-action="SellInBulk">Sell in Bulk</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Payment" asp-action="Index">Payment</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Product
+
+                            </a>
                         </li>
-     
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Buy">
+                                Buy
+                            </a>
+                        </li>
+
+
+
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-dark" href="#" id="repairDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
                             <ul class="dropdown-menu" aria-labelledby="repairDropdown">
@@ -219,6 +229,9 @@
                         }
                         else
                         {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Payment" asp-action="Index">Cart</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
                             </li>

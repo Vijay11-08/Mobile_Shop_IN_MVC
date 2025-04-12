@@ -1,15 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MobileShopInMVC.Models;  // Ensure correct namespace for Models
 
-namespace MobileShopInMVC.Models
+namespace MobileShopInMVC.Data  // Ensure this namespace matches the one in the controller
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+        }
 
-        public DbSet<Users> Users { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Product> Products { get; set; } // ✅ Ensure this exist
-        public DbSet<Payment> Payments { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Orders> Orders { get; set; }
 
     }
 }

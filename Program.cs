@@ -6,13 +6,18 @@ using Microsoft.Extensions.Configuration;
 using MobileShopInMVC.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Razorpay.Api;
+using MobileShopInMVC.Data;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 // ✅ Add Authentication and Cookie Authentication
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -33,7 +38,6 @@ builder.Services.AddSession();
 
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -43,7 +47,7 @@ app.UseHsts();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 
 // ✅ Enable session middleware

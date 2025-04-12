@@ -1,0 +1,19 @@
+﻿@model List<CartItem>
+
+<h2>Checkout</h2>
+<p>Total: $@Model.Sum(p => p.Price * p.Quantity)</p>
+
+<form action="/Order/PaymentSuccess" method="POST">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="rzp_test_YourKeyHere"
+            data-amount="@((Model.Sum(p => p.Price * p.Quantity) * 100).ToString())"
+            data-currency="INR"
+            data-buttontext="Pay with Razorpay"
+            data-name="MobileShop"
+            data-description="Test Payment"
+            data-image="https://yourlogo.com/logo.png"
+            data-prefill.name="Your Name"
+            data-prefill.email="you@example.com"
+            data-theme.color="#F37254">
+    </script>
+</form>

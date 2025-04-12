@@ -1,0 +1,41 @@
+﻿@model MobileShopInMVC.Models.Product
+@{
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Edit Product</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label>Name</label>
+        <input asp-for="Name" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label>Current Photo</label><br />
+        @if (!string.IsNullOrEmpty(Model.Photo))
+        {
+            <img src="~/uploads/@Model.Photo" width="100" height="100" />
+        }
+    </div>
+
+    <div class="form-group">
+        <label>Upload New Photo (optional)</label>
+        <input asp-for="PhotoFile" type="file" class="form-control" accept="image/*" />
+    </div>
+
+    <div class="form-group">
+        <label>Description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Price</label>
+        <input asp-for="Price" class="form-control" type="number" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Save Changes</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

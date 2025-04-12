@@ -1,126 +1,44 @@
-﻿
-@model List<MobileShopInMVC.Models.Register>
+﻿@model List<MobileShopInMVC.Models.Register>
 
 @{
     ViewData["Title"] = "Manage Users";
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
 }
 
-<h2>Manage Users</h2>
+<h2 class="text-center my-4">Manage Users</h2>
 
-<style>
-    /* Neon Table Styling */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(5px);
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.3);
+<div class="container">
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="table-primary">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Id</td>
+                        <td>@user.Name</td>
+                        <td>@user.Email</td>
+                        <td>@user.Role</td>
+                        <td>
+                            <a href="@Url.Action("EditUser", "Admin", new { id = user.Id })" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="@Url.Action("DeleteUser", "Admin", new { id = user.Id })" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     }
-
-    /* Table Header */
-    th {
-        background: linear-gradient(90deg, #ff00ff, #00ffff);
-        color: #fff;
-        font-size: 18px;
-        padding: 12px;
-        text-transform: uppercase;
-        text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
-        border-bottom: 2px solid #ff00ff;
+    else
+    {
+        <p class="text-muted text-center">No users found.</p>
     }
-
-    /* Table Rows */
-    td {
-        padding: 10px;
-        text-align: center;
-        font-size: 16px;
-        color: #fff;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    /* Alternating Row Colors */
-    tr:nth-child(even) {
-        background: rgba(0, 255, 255, 0.1);
-    }
-
-    tr:nth-child(odd) {
-        background: rgba(255, 0, 255, 0.1);
-    }
-
-    /* Hover Effect */
-    tr:hover {
-        background: #00ffff;
-        color: #000;
-        box-shadow: 0 0 20px #00ffff;
-    }
-
-    /* Neon Buttons */
-    a {
-        text-decoration: none;
-        font-size: 16px;
-        padding: 8px 15px;
-        border-radius: 20px;
-        font-weight: bold;
-        transition: 0.3s;
-        text-shadow: 0 0 10px #ff00ff;
-    }
-
-        /* Edit Button */
-        a[href*="EditUser"] {
-            color: #00ffff;
-            border: 2px solid #00ffff;
-        }
-
-            a[href*="EditUser"]:hover {
-                background: #00ffff;
-                color: #000;
-                box-shadow: 0 0 20px #00ffff;
-            }
-
-        /* Delete Button */
-        a[href*="DeleteUser"] {
-            color: #ff0033;
-            border: 2px solid #ff0033;
-        }
-
-            a[href*="DeleteUser"]:hover {
-                background: #ff0033;
-                color: #000;
-                box-shadow: 0 0 20px #ff0033;
-            }
-
-
-
-</style>
-@if (Model != null && Model.Any())
-{
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Actions</th>
-        </tr>
-        @foreach (var user in Model)
-        {
-            <tr>
-                <td>@user.Id</td>
-                <td>@user.Name</td>
-                <td>@user.Email</td>
-                <td>@user.Role</td>
-                <td>
-                    <a href="@Url.Action("EditUser", "Admin", new { id = user.Id })">Edit</a> |
-                    <a href="@Url.Action("DeleteUser", "Admin", new { id = user.Id })">Delete</a>
-                </td>
-            </tr>
-        }
-    </table>
-}
-else
-{
-    <p>No users found.</p>
-}
+</div>
