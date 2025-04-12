@@ -1,0 +1,27 @@
+﻿@model MobileShopInMVC.Models.Category
+
+@{
+    ViewData["Title"] = "Category Details";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Category Details</h2>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Category Name</dt>
+        <dd class="col-sm-10">@Model.CategoryName</dd>
+
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+
+        <dt class="col-sm-2">Created Date</dt>
+        <dd class="col-sm-10">@Model.CreatedDate.ToShortDateString()</dd>
+
+        <dt class="col-sm-2">Is Active</dt>
+        <dd class="col-sm-10">@Model.IsActive</dd>
+    </dl>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.CategoryId" class="btn btn-warning">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>

@@ -1,0 +1,14 @@
+﻿@model MobileShopInMVC.Models.Review
+@{
+    ViewBag.Title = "Review Details";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+
+}
+<h2>Review Details</h2>
+
+<p><strong>Name:</strong> @Model.Name</p>
+<p><strong>Email:</strong> @Model.Email</p>
+<p><strong>Message:</strong> @Model.Message</p>
+<p><strong>Created At:</strong> @Model.CreatedAt</p>
+
+<a asp-action="Index">Back to List</a>

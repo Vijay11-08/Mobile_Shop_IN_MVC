@@ -1,0 +1,45 @@
+﻿@model Orders
+@{
+    var products = ViewBag.Products as List<Product>;
+}
+@{
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+<h2>Edit Order</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label>Product</label>
+        <select asp-for="ProductId" class="form-control">
+            @foreach (var p in products)
+            {
+                <option value="@p.Id" selected="@(@Model.ProductId == p.Id)">
+                    @p.Name
+                </option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Product Name</label>
+        <input asp-for="ProductName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Buyer Name</label>
+        <input asp-for="BuyerName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <input asp-for="Price" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Payment ID</label>
+        <input asp-for="PaymentId" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>

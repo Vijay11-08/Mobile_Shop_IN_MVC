@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Orders>
+@{
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+<h2>Order List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Buyer</th>
+            <th>Email</th>
+            <th>Price</th>
+            <th>Payment ID</th>
+            <th>Order Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.BuyerName</td>
+                <td>@item.Email</td>
+                <td>@item.Price</td>
+                <td>@item.PaymentId</td>
+                <td>@item.OrderDate.ToString("dd-MM-yyyy")</td>
+                <td>
+                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

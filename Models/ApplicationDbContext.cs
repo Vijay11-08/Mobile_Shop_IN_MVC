@@ -11,6 +11,10 @@ namespace MobileShopInMVC.Data  // Ensure this namespace matches the one in the 
 
         public DbSet<Product> Product { get; set; }
         public DbSet<Orders> Orders { get; set; }
+        public DbSet<Category> Category { get; set; }
+ 
+        public DbSet<Ratings> Ratings { get; set; }
+
 
     }
 }

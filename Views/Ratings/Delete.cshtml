@@ -1,0 +1,16 @@
+﻿@model MobileShopInMVC.Models.Ratings
+@{
+    ViewData["Title"] = "Delete Rating";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+
+}
+
+<h2>Are you sure you want to delete this rating?</h2>
+<p><strong>Stars:</strong> @Model.Stars</p>
+<p><strong>Feedback:</strong> @Model.Feedback</p>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

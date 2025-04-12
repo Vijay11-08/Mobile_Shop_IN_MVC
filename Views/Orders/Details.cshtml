@@ -1,0 +1,17 @@
+﻿@model Orders
+@{
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Order Details</h2>
+
+<div>
+    <p><strong>Product:</strong> @Model.ProductName</p>
+    <p><strong>Buyer:</strong> @Model.BuyerName</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Price:</strong> @Model.Price</p>
+    <p><strong>Payment ID:</strong> @Model.PaymentId</p>
+    <p><strong>Date:</strong> @Model.OrderDate</p>
+</div>
+
+<a asp-action="Index" class="btn btn-primary">Back to List</a>

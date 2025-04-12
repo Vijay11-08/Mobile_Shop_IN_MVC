@@ -1,0 +1,13 @@
+﻿@model MobileShopInMVC.Models.Ratings
+@{
+    ViewData["Title"] = "Rating Details";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+
+}
+
+<h2>Rating Details</h2>
+<p><strong>Stars:</strong> @Model.Stars</p>
+<p><strong>Feedback:</strong> @Model.Feedback</p>
+<p><strong>Submitted At:</strong> @Model.CreatedAt.ToString("f")</p>
+
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>

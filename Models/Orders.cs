@@ -33,10 +33,9 @@ namespace MobileShopInMVC.Models
         public string PaymentId { get; set; }
 
         [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime OrderDate { get; set; } = DateTime.Now;
 
-        // Navigation Property
+        // Navigation property
         [ForeignKey("ProductId")]
         public virtual Product Product { get; set; }
     }
