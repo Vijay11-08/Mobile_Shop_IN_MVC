@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Mobile Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 15px;
+    }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+    .card-title {
+        font-weight: 600;
+        color: #2c3e50;
+    }
+
+    .card-text {
+        font-size: 0.95rem;
+        color: #555;
+    }
+
+    .blog-date {
+        font-size: 0.85rem;
+        color: #888;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+</style>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-5 text-primary">📱 Mobile Shop Blog</h2>
+    <div class="row">
+
+        <!-- Blog 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100 border-0">
+                <img src="~/Image/i13.jpg" class="card-img-top" alt="Top Smartphones 2025" style="height: 200px; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                <div class="card-body">
+                    <h5 class="card-title">Top Smartphones in 2025</h5>
+                    <p class="blog-date">By Admin | 12 April 2025</p>
+                    <p class="card-text">Explore the best smartphones with amazing performance, camera, and battery life in 2025.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100 border-0">
+                <img src="~/Image/snote20.jpg" class="card-img-top" alt="Choose the Right Mobile" style="height: 200px; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                <div class="card-body">
+                    <h5 class="card-title">How to Choose the Right Mobile</h5>
+                    <p class="blog-date">By Vijay | 10 April 2025</p>
+                    <p class="card-text">A complete guide to help you pick the perfect mobile phone based on your needs.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100 border-0">
+                <img src="~/Image/xnote10.jpg" class="card-img-top" alt="Mobile Accessories" style="height: 200px; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                <div class="card-body">
+                    <h5 class="card-title">Must-Have Mobile Accessories</h5>
+                    <p class="blog-date">By Mobile Shop | 8 April 2025</p>
+                    <p class="card-text">Check out the essential accessories that enhance your mobile phone experience.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

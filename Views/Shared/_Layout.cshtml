@@ -21,8 +21,6 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MobileShopInMVC.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/YOUR-KIT-ID.js" crossorigin="anonymous"></script>
-
 
     <style>
         footer {
@@ -126,11 +124,9 @@
                 .social-icons-container a:hover {
                     color: #ff7f50;
                 }
-
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 
 </head>
 <body>
@@ -138,7 +134,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    <i class="fas fa-mobile-alt"></i> LikeZone
+                    <i class="fas fa-mobile-alt"></i>📱 LikeZone
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
@@ -150,7 +146,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                      
+
                         <!-- First Dropdown -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-dark" href="#" id="productsDropdown" role="button"
@@ -169,11 +165,11 @@
                             </ul>
                         </li>
 
-                       
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Sell" asp-action="Sell">Sell Page</a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Shop">
                                 Go to Shop
@@ -213,7 +209,7 @@
                         }
                         else
                         {
-                      
+
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
                             </li>
@@ -234,6 +230,7 @@
     </div>
 
 
+
     <footer>
         <div class="footer-container">
             <div class="newsletter">
@@ -249,10 +246,10 @@
                 <div class="column">
                     <h4>SERVICES</h4>
                     <ul>
-                        <li><a href="#">In-Store</a></li>
-                        <li><a href="#">Gift Cards</a></li>
+                        <li><a href="@Url.Action("Shop", "Product")">In-Store</a></li>
+
                         <li><a href="@Url.Action("FAQs", "More")">Repair & Tech</a></li>
-                        <li><a href="#">Trade-In</a></li>
+
                         <li><a href="@Url.Action("BuyAccessroies", "Buy")">All Access</a></li>
                         <li><a href="@Url.Action("FAQs", "More")">FAQ</a></li>
                     </ul>
@@ -269,7 +266,7 @@
                 <div class="column">
                     <h4>INFORMATION</h4>
                     <ul>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="@Url.Action("Blog", "Home")">Blog</a></li>
                         <li><a href="@Url.Action("FAQs", "More")">FAQs</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms & Conditions</a></li>
@@ -284,16 +281,11 @@
                 <a href="https://www.instagram.com/like_zone_mobile_shop/" class="fa fa-instagram"></a>
             </div>
         </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-   
+    </footer>   
 
 
     <!-- Add Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/YOUR-KIT-ID.js" crossorigin="anonymous"></script>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -301,6 +293,4 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-
-
 

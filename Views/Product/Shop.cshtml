@@ -1,4 +1,6 @@
 ﻿@model List<MobileShopInMVC.Models.Product>
+
+
 <style>
     /* Global Styles */
     body {
@@ -117,6 +119,12 @@
 </style>
 
 <h2 style="text-align: center; margin: 30px 0; font-size: 32px; color: #333;">🛍️ Shop Products</h2>
+<form asp-action="Shop" method="get" class="d-flex justify-content-center mb-4">
+    <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="form-control w-50 me-2" placeholder="🔍 Search for a product..." />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
     @foreach (var item in Model)

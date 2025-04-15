@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Razorpay.Api;
 using MobileShopInMVC.Data;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -34,7 +35,13 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 // Add Authorization
 builder.Services.AddAuthorization();
 
-// Add Session Support
+// Register IHttpContextAccessor
+builder.Services.AddHttpContextAccessor();
+
+// Enable session
+builder.Services.AddSession();
+
+// Add Session Support with Idle Timeout configuration
 builder.Services.AddSession(options =>
 {
     // Optionally configure session properties (e.g., timeout) if needed
@@ -53,7 +60,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-// Use Session middleware (only once)
+// Ensure Session middleware is used before routing
 app.UseSession();
 
 app.UseRouting();

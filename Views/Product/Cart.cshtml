@@ -1,5 +1,7 @@
 ﻿@model List<MobileShopInMVC.Models.CartItem>
 
+
+
 <h2>Your Cart</h2>
 
 @if (!Model.Any())
@@ -15,25 +17,169 @@ else
             <th>Price</th>
             <th>Quantity</th>
             <th>Total</th>
+            <th>Actions</th>
         </tr>
         @foreach (var item in Model)
         {
-            <tr>
+            <tr id="cart-item-@item.ProductId">
                 <td>@item.ProductName</td>
                 <td><img src="~/uploads/@item.Photo" width="50" /></td>
-                <td>₹@item.Price</td>
-                <td>@item.Quantity</td>
-                <td>₹@(item.Price * item.Quantity)</td>
+                <td data-price="@item.Price" id="price-@item.ProductId">₹@item.Price</td>
+                <td>
+                    <button class="btn btn-sm btn-success increase" data-id="@item.ProductId">+</button>
+                    <span id="quantity-@item.ProductId">@item.Quantity</span>
+                    <button class="btn btn-sm btn-danger decrease" data-id="@item.ProductId">-</button>
+                </td>
+                <td id="total-@item.ProductId">₹@(item.Price * item.Quantity)</td>
+                <td>
+                    <button class="btn btn-sm btn-warning remove" data-id="@item.ProductId">Remove</button>
+                </td>
             </tr>
         }
     </table>
 
-    <h3>Total: ₹@Model.Sum(i => i.Price * i.Quantity)</h3>
+    <h3>Total: ₹<span id="cart-total">@Model.Sum(i => i.Price * i.Quantity)</span></h3>
 
-    <!-- Change from <a> to <form> for POST request -->
     <form method="post" action="/Product/Checkout">
         @Html.AntiForgeryToken()  <!-- Add this line -->
         <button type="submit" class="btn btn-primary">Proceed to Checkout</button>
     </form>
+}
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
+            <script>
+        // Increase quantity
+        $('.increase').click(function() {
+            var productId = $(this).data('id');
+            var price = parseFloat($('#price-' + productId).data('price'));  // Get the price from the data attribute
+            $.ajax({
+                url: '/Cart/IncreaseQuantity',  // Adjust this URL if needed
+                type: 'POST',
+                data: { productId: productId },
+                success: function(response) {
+                    var newQuantity = response.newQuantity;
+                    $('#quantity-' + productId).text(newQuantity);  // Update quantity displayed
+                    var totalPrice = newQuantity * price;  // Calculate new total price for this item
+                    $('#total-' + productId).text('₹' + totalPrice.toFixed(2));  // Update total price for this item
+                    updateCartTotal();  // Update the total price of the cart
+                }
+            });
+        });
+
+        // Decrease quantity
+        $('.decrease').click(function() {
+            var productId = $(this).data('id');
+            var price = parseFloat($('#price-' + productId).data('price'));  // Get the price from the data attribute
+            $.ajax({
+                url: '/Cart/DecreaseQuantity',  // Adjust this URL if needed
+                type: 'POST',
+                data: { productId: productId },
+                success: function(response) {
+                    var newQuantity = response.newQuantity;
+                    if (newQuantity > 0) {
+                        $('#quantity-' + productId).text(newQuantity);  // Update quantity displayed
+                        var totalPrice = newQuantity * price;  // Calculate new total price
+                        $('#total-' + productId).text('₹' + totalPrice.toFixed(2));  // Update total price for this item
+                    } else {
+                        $('#cart-item-' + productId).remove();  // Remove the item row from the cart
+                    }
+                    updateCartTotal();  // Update the total price of the cart
+                }
+            });
+        });
+
+        // Remove item
+        $('.remove').click(function() {
+            var productId = $(this).data('id');
+            $.ajax({
+                url: '/Cart/RemoveFromCart',  // Adjust this URL if needed
+                type: 'POST',
+                data: { productId: productId },
+                success: function(response) {
+                    $('#cart-item-' + productId).remove();  // Remove the item row from the cart
+                    updateCartTotal();  // Update the total price of the cart
+                }
+            });
+        });
+
+               // Update the total price of the cart
+        function updateCartTotal() {
+            var total = 0;
+            $('tr').each(function() {
+                // Find the quantity and price for each item
+                var quantity = parseInt($(this).find('.quantity').text()) || 0;
+                var price = parseFloat($(this).find('.price').text().replace('₹', '')) || 0;
+
+                // Calculate the total for this item
+                var itemTotal = quantity * price;
+
+                // Update the total for each product
+                $(this).find('.item-total').text('₹' + itemTotal.toFixed(2));  // Show item total dynamically
+
+                // Add the item total to the overall cart total
+                total += itemTotal;
+            });
+
+            // Update the total cart value
+            $('#cart-total').text('₹' + total.toFixed(2));
+        }
+
+        // Increase quantity button click
+        $('.increase').click(function() {
+            var productId = $(this).data('id');
+            var price = parseFloat($('#price-' + productId).data('price'));  // Get the price of the item
+            $.ajax({
+                url: '/Cart/IncreaseQuantity',  // Adjust the URL to your specific controller action
+                type: 'POST',
+                data: { productId: productId },
+                success: function(response) {
+                    var newQuantity = response.newQuantity;
+                    $('#quantity-' + productId).text(newQuantity);  // Update the displayed quantity
+                    var totalPrice = newQuantity * price;  // Calculate the new total price for this item
+                    $('#total-' + productId).text('₹' + totalPrice.toFixed(2));  // Update item total dynamically
+                    updateCartTotal();  // Recalculate and update the overall cart total
+                }
+            });
+        });
+
+        // Decrease quantity button click
+        $('.decrease').click(function() {
+            var productId = $(this).data('id');
+            var price = parseFloat($('#price-' + productId).data('price'));  // Get the price of the item
+            $.ajax({
+                url: '/Cart/DecreaseQuantity',  // Adjust the URL to your specific controller action
+                type: 'POST',
+                data: { productId: productId },
+                success: function(response) {
+                    var newQuantity = response.newQuantity;
+                    if (newQuantity > 0) {
+                        $('#quantity-' + productId).text(newQuantity);  // Update the displayed quantity
+                        var totalPrice = newQuantity * price;  // Calculate the new total price for this item
+                        $('#total-' + productId).text('₹' + totalPrice.toFixed(2));  // Update item total dynamically
+                    } else {
+                        $('#cart-item-' + productId).remove();  // If quantity reaches zero, remove the item
+                    }
+                    updateCartTotal();  // Recalculate and update the overall cart total
+                }
+            });
+        });
+
+        // Remove item from cart
+        $('.remove').click(function() {
+            var productId = $(this).data('id');
+            $.ajax({
+                url: '/Cart/RemoveFromCart',  // Adjust the URL to your specific controller action
+                type: 'POST',
+                data: { productId: productId },
+                success: function(response) {
+                    $('#cart-item-' + productId).remove();  // Remove the item from the cart table
+                    updateCartTotal();  // Recalculate and update the overall cart total
+                }
+            });
+        });
+
+    </script>
+
 
 }

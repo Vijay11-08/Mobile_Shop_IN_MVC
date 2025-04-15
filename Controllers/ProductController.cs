@@ -34,8 +34,10 @@ namespace MobileShopInMVC.Controllers
         }
 
         // GET: Product
+        [HttpGet]
         public IActionResult Index()
         {
+
             List<LocalProduct> products = new();
             using (SqlConnection conn = new(_connectionString))
             {
@@ -296,13 +298,26 @@ namespace MobileShopInMVC.Controllers
         {
             return View();
         }
-        public IActionResult Shop()
+
+        [HttpGet]
+        public IActionResult Shop(string searchTerm)
         {
             List<LocalProduct> products = new();
             using (SqlConnection conn = new(_connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new("SELECT * FROM Product", conn);
+
+                string query = string.IsNullOrEmpty(searchTerm)
+                    ? "SELECT * FROM Product"
+                    : "SELECT * FROM Product WHERE Name LIKE @searchTerm";
+
+                SqlCommand cmd = new(query, conn);
+
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    cmd.Parameters.AddWithValue("@searchTerm", "%" + searchTerm + "%");
+                }
+
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -316,8 +331,11 @@ namespace MobileShopInMVC.Controllers
                     });
                 }
             }
+
+            ViewBag.SearchTerm = searchTerm;
             return View(products);
         }
+
 
     }
 }

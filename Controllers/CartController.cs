@@ -54,23 +54,7 @@ namespace MobileShopInMVC.Controllers
             return RedirectToAction("Index");
         }
 
-        // Remove Item from Cart
-        public IActionResult RemoveFromCart(int id)
-        {
-            var cart = _httpContextAccessor.HttpContext.Session.GetObjectFromJson<List<CartItem>>("Cart");
-            if (cart == null)
-                return RedirectToAction("Index");
-
-            var itemToRemove = cart.FirstOrDefault(p => p.ProductId == id);
-            if (itemToRemove != null)
-            {
-                cart.Remove(itemToRemove);
-                _httpContextAccessor.HttpContext.Session.SetObjectAsJson("Cart", cart);
-            }
-
-            return RedirectToAction("Index");
-        }
-
+        
         // Checkout Cart
         public IActionResult Checkout()
         {
@@ -108,5 +92,58 @@ namespace MobileShopInMVC.Controllers
 
             return View();
         }
+
+
+
+        [HttpPost]
+        public JsonResult IncreaseQuantity(int productId)
+        {
+            var cart = _httpContextAccessor.HttpContext.Session.GetObjectFromJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+            var item = cart.FirstOrDefault(x => x.ProductId == productId);
+            if (item != null)
+            {
+                item.Quantity++;
+                _httpContextAccessor.HttpContext.Session.SetObjectAsJson("Cart", cart);
+                return Json(new { newQuantity = item.Quantity });
+            }
+            return Json(new { newQuantity = 0 });
+        }
+
+
+        [HttpPost]
+        public JsonResult DecreaseQuantity(int productId)
+        {
+            var cart = _httpContextAccessor.HttpContext.Session.GetObjectFromJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+            var item = cart.FirstOrDefault(x => x.ProductId == productId);
+            if (item != null)
+            {
+                if (item.Quantity > 1)
+                {
+                    item.Quantity--;
+                }
+                else
+                {
+                    cart.Remove(item);
+                }
+                _httpContextAccessor.HttpContext.Session.SetObjectAsJson("Cart", cart);
+                return Json(new { newQuantity = item.Quantity });
+            }
+            return Json(new { newQuantity = 0 });
+        }
+
+
+        [HttpPost]
+        public JsonResult RemoveFromCart(int productId)
+        {
+            var cart = _httpContextAccessor.HttpContext.Session.GetObjectFromJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+            var item = cart.FirstOrDefault(x => x.ProductId == productId);
+            if (item != null)
+            {
+                cart.Remove(item);
+                _httpContextAccessor.HttpContext.Session.SetObjectAsJson("Cart", cart);
+            }
+            return Json(new { success = true });
+        }
+
     }
 }
