@@ -1,141 +1,104 @@
-﻿
-@{
-    ViewData["Title"] = "Buy and Sell Phones Online";
+﻿@{
+    ViewData["Title"] = "Welcome to LikeZone - Mobile Shop";
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
+<style>
+    body {
+        background-color: #f5f7fa;
+    }
+
+    .map-container iframe {
+        width: 100%;
+        height: 300px;
+        border: 0;
+        border-radius: 10px;
+    }
+
+    .info-box {
+        background: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+        font-weight: 700;
+        font-size: 2rem;
+        color: #343a40;
+        margin-bottom: 20px;
+    }
+
+    .about-section, .contact-section {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 40px 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+        margin-top: 50px;
+    }
+
+        .about-section p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.7;
         }
 
-       
+    .contact-details p {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        color: #444;
+    }
 
-        .hero {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            padding: 40px 0;
-        }
+    .contact-details strong {
+        color: #000;
+    }
 
-        .buy-section, .sell-section {
-            width: 300px;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
+    .icon-title {
+        color: #007bff;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+</style>
 
-        .buy-section {
-            background-color: #007bff;
-            color: white;
-        }
+<div class="container mt-4">
+    <!-- Hero Section -->
+    <div class="bg-dark text-white p-5 rounded shadow-lg text-center">
+        <h1><i class="fas fa-mobile-alt"></i> Welcome to LikeZone</h1>
+        <p class="lead">Your One-Stop Destination for the Latest Mobiles & Accessories!</p>
+        <a href="@Url.Action("Shop", "Product")" class="btn btn-warning btn-lg mt-3"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+    </div>
 
-        .sell-section {
-            background-color: #ff7b00;
-            color: white;
-        }
+    <!-- About Us -->
+    <div class="about-section">
+        <h2 class="section-title text-center"><i class="fas fa-store"></i> About Us</h2>
+        <p class="text-center">
+            Welcome to <strong>Like Zone Mobile Shop</strong>! We are passionate about delivering the latest in mobile technology at unbeatable prices. With a commitment to quality, our mission is to provide a seamless and trustworthy shopping experience for all our customers.
+        </p>
+        <p class="text-center">
+            Whether you're searching for the newest smartphone, affordable gadgets, or premium accessories, our expert team is here to help. Visit us in <strong>Tramba, Rajkot</strong>, or browse our catalog online to enjoy the best in mobile innovation and customer service.
+        </p>
 
-        button {
-            background-color: white;
-            color: black;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .sell-info {
-            padding: 30px;
-        }
-
-        .device-filter {
-            background-color: #ff7b00;
-            color: white;
-            padding: 20px;
-            text-align: left;
-            width: 200px;
-            margin: auto;
-            border-radius: 10px;
-        }
-
-        .trade-in {
-            padding: 30px;
-        }
-
-        .device-list {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .device {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Buying and Selling Phones Online Has Never Been So Easy</h1>
-    </header>
-    <section class="hero">
-        <div class="buy-section">
-            <h2>Buy</h2>
-            <p>Certified Pre-Owned Devices</p>
-            <button>Start Shopping</button>
+        <div class="map-container mt-4">
+            <h5 class="icon-title"><i class="fas fa-map-marker-alt"></i> Our Location</h5>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1497.9133076861314!2d70.9084468!3d22.2273058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3959b3551aaaaaa3%3A0xdb55ec52f4a4c4f4!2sLike%20Zone%20Mobile%20Shop!5e0!3m2!1sen!2sin!4v1674857150042!5m2!1sen!2sin"
+                    allowfullscreen=""
+                    loading="lazy">
+            </iframe>
         </div>
-        <div class="sell-section">
-            <h2>Sell</h2>
-            <p>Trade In Your Device for Cash</p>
-            <button>Start Selling</button>
-        </div>
-    </section>
-    <section class="sell-info">
-        <h2>Sell Your Phone for Cash <span>In Minutes</span></h2>
-        <p>Selling electronics online with SmartphonesPLUS is easy and safe...</p>
-    </section>
-    <aside class="device-filter">
-        <h3>Sell by Device Type:</h3>
-        <ul>
-            <li>Sell iPhone</li>
-            <li>Sell Samsung</li>
-            <li>Sell Android</li>
-            <li>Sell MacBook</li>
-            <li>Sell Smartwatch</li>
-            <li>Sell iPad / Tablet</li>
-        </ul>
-    </aside>
-    <section class="trade-in">
-        <h2>Most Popular Trade Ins</h2>
-        <div class="device-list">
-            <div class="device">
-                <h3>iPhone 12 Pro Max</h3>
-                <p>Up to $280</p>
-                <button>Start Selling</button>
-            </div>
-            <div class="device">
-                <h3>iPhone 11</h3>
-                <p>Up to $137</p>
-                <button>Start Selling</button>
-            </div>
-            <div class="device">
-                <h3>iPhone 6s</h3>
-                <p>Up to $4</p>
-                <button>Start Selling</button>
-            </div>
-        </div>
-    </section>
+    </div>
+
+    <!-- Contact Us -->
+    <div class="contact-section">
+        <h2 class="section-title text-center"><i class="fas fa-envelope"></i> Contact Us</h2>
    
-</body>
-</html>
+            <div class="col-md-6 info-box contact-details">
+                <h5 class="icon-title"><i class="fas fa-phone-alt"></i> Get in Touch</h5>
+                <p><strong>Phone:</strong> +91 9904640764</p>
+                <p><strong>Phone:</strong> +91 9714520147</p>
+                <p><strong>Email:</strong> likezonemobileshop@gmail.com</p>
+                <p><strong>Address:</strong> Like Zone Mobile Shop, Tramba, Rajkot, Gujarat, India</p>
+            </div>
+       
+    </div>
+</div>

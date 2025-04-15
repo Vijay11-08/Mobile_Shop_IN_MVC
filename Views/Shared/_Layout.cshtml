@@ -21,51 +21,45 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MobileShopInMVC.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/YOUR-KIT-ID.js" crossorigin="anonymous"></script>
+
 
     <style>
         footer {
-            background-color: #5a3c39;
+            background-color: #343a40;
             color: white;
             padding: 40px 0;
             font-family: Arial, sans-serif;
+            text-align: center;
         }
 
         .footer-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
             max-width: 1200px;
             margin: auto;
-            padding: 0 40px;
+            padding: 0 20px;
         }
 
-        .newsletter {
-            flex: 1;
-            min-width: 300px;
-            margin-bottom: 20px;
+            .footer-container .newsletter {
+                margin-bottom: 20px;
+            }
+
+        .newsletter h3 {
+            font-size: 22px;
+            font-weight: bold;
         }
-
-            .newsletter h3 {
-                font-size: 20px;
-                font-weight: bold;
-            }
-
-            .newsletter p {
-                font-size: 14px;
-                margin: 10px 0;
-            }
 
         .email-box {
             display: flex;
-            margin-top: 10px;
+            justify-content: center;
+            margin-top: 15px;
         }
 
             .email-box input {
-                flex: 1;
                 padding: 12px;
                 border: none;
                 border-radius: 5px 0 0 5px;
                 font-size: 14px;
+                width: 250px;
             }
 
             .email-box button {
@@ -81,68 +75,72 @@
 
         .footer-links {
             display: flex;
-            flex: 2;
             justify-content: space-between;
             flex-wrap: wrap;
+            margin-top: 30px;
         }
 
-        .column {
-            min-width: 180px;
-            margin-bottom: 20px;
-        }
-
-            .column h4 {
-                font-size: 16px;
-                font-weight: bold;
-                margin-bottom: 10px;
+            .footer-links .column {
+                min-width: 200px;
+                margin-bottom: 20px;
             }
 
-            .column ul {
-                list-style: none;
-                padding: 0;
-            }
-
-                .column ul li {
-                    margin-bottom: 8px;
+                .footer-links .column h4 {
+                    font-size: 16px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
                 }
 
-                    .column ul li a {
-                        color: white;
-                        text-decoration: none;
-                        font-size: 14px;
-                        transition: 0.3s;
+                .footer-links .column ul {
+                    list-style: none;
+                    padding: 0;
+                }
+
+                    .footer-links .column ul li {
+                        margin-bottom: 8px;
                     }
 
-                        .column ul li a:hover {
-                            text-decoration: underline;
-                            color: #ff7f50;
+                        .footer-links .column ul li a {
+                            color: white;
+                            text-decoration: none;
+                            font-size: 14px;
+                            transition: 0.3s;
                         }
 
-        .social-icons {
-            font-size: 1.5rem; /* Icon size */
-            color: #fff; /* Default icon color */
-            transition: color 0.3s ease; /* Smooth hover effect */
-        }
-
-            .social-icons:hover {
-                color: #007bff; /* Change color on hover (e.g., blue) */
-            }
+                            .footer-links .column ul li a:hover {
+                                text-decoration: underline;
+                                color: #ff7f50;
+                            }
 
         .social-icons-container {
-            display: flex;
-            justify-content: center; /* Center-align icons */
-            gap: 15px; /* Spacing between icons */
-            margin-top: 15px; /* Add spacing above the icons */
-            list-style: none; /* Remove default bullet points */
-            padding: 0; /* Remove default padding */
+            margin-top: 20px;
         }
+
+            .social-icons-container a {
+                font-size: 2rem;
+                margin: 0 15px;
+                color: white;
+                transition: color 0.3s;
+            }
+
+                .social-icons-container a:hover {
+                    color: #ff7f50;
+                }
+
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MobileShopInMVC</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-mobile-alt"></i> LikeZone
+                </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -246,55 +244,56 @@
                     <button>Subscribe</button>
                 </div>
             </div>
+
             <div class="footer-links">
                 <div class="column">
                     <h4>SERVICES</h4>
                     <ul>
                         <li><a href="#">In-Store</a></li>
                         <li><a href="#">Gift Cards</a></li>
-                        <li><a href="#">Repair & Tech</a></li>
+                        <li><a href="@Url.Action("FAQs", "More")">Repair & Tech</a></li>
                         <li><a href="#">Trade-In</a></li>
-                        <li><a href="#">All Access</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="@Url.Action("BuyAccessroies", "Buy")">All Access</a></li>
+                        <li><a href="@Url.Action("FAQs", "More")">FAQ</a></li>
                     </ul>
                 </div>
                 <div class="column">
                     <h4>COMPANY</h4>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Store Locations</a></li>
+                        <li><a href="@Url.Action("AboutUs", "More")">About Us</a></li>
+                        <li><a href="@Url.Action("AboutUs", "More")">Careers</a></li>
+                        <li><a href="@Url.Action("ContactUs", "More")">Contact Us</a></li>
+                        <li><a href="@Url.Action("AboutUs", "More")">Store Locations</a></li>
                     </ul>
                 </div>
                 <div class="column">
                     <h4>INFORMATION</h4>
                     <ul>
                         <li><a href="#">Blog</a></li>
-                        <li><a href="#">FAQs</a></li>
+                        <li><a href="@Url.Action("FAQs", "More")">FAQs</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms & Conditions</a></li>
                     </ul>
                 </div>
-                <div class="social-icons">
-                    <h4>Follow Us</h4>
-                    <div class="icons">
-                        <ul class="social-icons-container">
-                            <li><a href="#" class="fa fa-facebook social-icons"></a></li>
-                            <li><a href="#" class="fa fa-twitter social-icons"></a></li>
-                            <li><a href="https://www.linkedin.com/in/vijay-otaradi-678427266/" class="fa fa-linkedin social-icons"></a></li>
-                            <li><a href="https://www.instagram.com/like_zone_mobile_shop/" class="fa fa-instagram social-icons"></a></li>
-                        </ul>
-                    </div>
-                </div>
+            </div>
+
+            <div class="social-icons-container">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="https://www.linkedin.com/in/vijay-otaradi-678427266/" class="fa fa-linkedin"></a>
+                <a href="https://www.instagram.com/like_zone_mobile_shop/" class="fa fa-instagram"></a>
             </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+   
 
 
     <!-- Add Font Awesome for icons -->
-    <script src="https://kit.fontawesome.com/YOUR-KIT-ID.js" crossorigin="anonymous"></script>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
