@@ -1,0 +1,39 @@
+﻿@model List<MobileShopInMVC.Models.CartItem>
+
+<h2>Your Cart</h2>
+
+@if (!Model.Any())
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>Product</th>
+            <th>Photo</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td><img src="~/uploads/@item.Photo" width="50" /></td>
+                <td>₹@item.Price</td>
+                <td>@item.Quantity</td>
+                <td>₹@(item.Price * item.Quantity)</td>
+            </tr>
+        }
+    </table>
+
+    <h3>Total: ₹@Model.Sum(i => i.Price * i.Quantity)</h3>
+
+    <!-- Change from <a> to <form> for POST request -->
+    <form method="post" action="/Product/Checkout">
+        @Html.AntiForgeryToken()  <!-- Add this line -->
+        <button type="submit" class="btn btn-primary">Proceed to Checkout</button>
+    </form>
+
+}

@@ -19,6 +19,7 @@
     <PackageReference Include="MySql.Data" Version="9.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Razorpay" Version="1.1.0" />
+    <PackageReference Include="Stripe.net" Version="48.0.1" />
     <PackageReference Include="System.Diagnostics.Tools" Version="4.3.0" />
   </ItemGroup>
 

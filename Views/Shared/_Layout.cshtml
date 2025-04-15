@@ -171,35 +171,21 @@
                             </ul>
                         </li>
 
-                        <!-- Second Dropdown -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="servicesDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
-                                Sell
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                                <li><a class="dropdown-item" asp-controller="Sell" asp-action="SellIphone">SellIphone</a></li>
-                                <li><a class="dropdown-item" asp-controller="Sell" asp-action="SellSamsung">SellSamsung</a></li>
-                                <li><a class="dropdown-item" asp-controller="Sell" asp-action="SellIpad">SellIpad</a></li>
-                                <li><a class="dropdown-item" asp-controller="Sell" asp-action="SellAndroid">SellAndroid</a></li>
-                                <li><a class="dropdown-item" asp-controller="Sell" asp-action="SellSmartwatch">SellSmartwatch</a></li>
-                                <li><a class="dropdown-item" asp-controller="Sell" asp-action="SellOtheritem">SellOtheritem</a></li>
-                            </ul>
-                        </li>
+                       
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Sell" asp-action="Sell">Sell Page</a>
                         </li>
+                        
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Else" asp-action="SellInBulk">Sell in Bulk</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Product
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Shop">
+                                Go to Shop
 
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Buy">
-                                Buy
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Cart">
+                                View Cart
+
                             </a>
                         </li>
 
@@ -229,9 +215,7 @@
                         }
                         else
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Payment" asp-action="Index">Cart</a>
-                            </li>
+                      
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
                             </li>

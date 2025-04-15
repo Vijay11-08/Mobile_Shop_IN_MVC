@@ -1,0 +1,20 @@
+﻿@model MobileShopInMVC.Models.BuyerViewModel
+
+<h2>Order Summary</h2>
+
+<p><strong>Product:</strong> @Model.ProductName</p>
+<p><strong>Price:</strong> ₹@Model.ProductPrice</p>
+<p><strong>Buyer:</strong> @Model.BuyerName</p>
+<p><strong>Email:</strong> @Model.BuyerEmail</p>
+<p><strong>Address:</strong> @Model.BuyerAddress</p>
+
+<hr />
+
+<form asp-controller="Payment" asp-action="Checkout" method="post">
+    <input type="hidden" name="productName" value="@Model.ProductName" />
+    <input type="hidden" name="productPrice" value="@Model.ProductPrice" />
+    <button type="submit" class="btn btn-primary">Pay with Stripe</button>
+</form>
+
+<br />
+<a asp-action="Index" class="btn btn-success">Back to Products</a>

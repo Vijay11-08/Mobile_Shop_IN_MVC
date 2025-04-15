@@ -1,0 +1,31 @@
+﻿@model MobileShopInMVC.Models.BuyerViewModel
+
+<h2>Buy Product</h2>
+
+<div>
+    <h3>@Model.ProductName</h3>
+    <img src="~/uploads/@Model.ProductPhoto" width="200" />
+    <p>Price: ₹@Model.ProductPrice</p>
+</div>
+
+<form asp-action="Buy" method="post">
+    <input type="hidden" asp-for="ProductId" />
+    <input type="hidden" asp-for="ProductName" />
+    <input type="hidden" asp-for="ProductPhoto" />
+    <input type="hidden" asp-for="ProductPrice" />
+
+    <div class="form-group">
+        <label asp-for="BuyerName"></label>
+        <input asp-for="BuyerName" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label asp-for="BuyerEmail"></label>
+        <input asp-for="BuyerEmail" class="form-control" type="email" required />
+    </div>
+    <div class="form-group">
+        <label asp-for="BuyerAddress"></label>
+        <textarea asp-for="BuyerAddress" class="form-control" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+</form>
