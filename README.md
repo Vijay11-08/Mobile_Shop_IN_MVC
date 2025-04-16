@@ -45,9 +45,18 @@ An eCommerce web application built with **ASP.NET Core MVC** for buying and sell
 
 ![image](https://github.com/user-attachments/assets/a5727153-c2b1-433b-8981-6543036ecd00)
 
+![image](https://github.com/user-attachments/assets/37f00d39-81de-4e47-a3bc-09fdb82c9db2)
+
+![image](https://github.com/user-attachments/assets/715d1913-e6aa-4283-9db7-02ad83098a1a)
+
+![image](https://github.com/user-attachments/assets/2945af28-84b6-4ab5-bec4-233b4db9ae5d)
+
 ![image](https://github.com/user-attachments/assets/5a4750ef-fd38-448d-aecf-69917a359519)
 
+![image](https://github.com/user-attachments/assets/1161b87d-317f-45fa-94a3-1161f7927710)
 
+![image](https://github.com/user-attachments/assets/0b7c8b0e-3eab-41cd-a534-2aa9334c3de5)
 
+![image](https://github.com/user-attachments/assets/45d29841-8648-4ff9-bf20-5f9dc59533ab)
 
 
