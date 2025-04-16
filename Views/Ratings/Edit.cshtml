@@ -2,29 +2,82 @@
 @{
     ViewData["Title"] = "Edit Rating";
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
-
 }
+<style>
+    .form-group label {
+        font-weight: bold;
+    }
 
-<h2>Edit Rating</h2>
+    .form-group select,
+    .form-group textarea {
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        padding: 10px;
+        transition: border-color 0.3s ease;
+    }
 
-<form asp-action="Edit" method="post">
-    <input type="hidden" asp-for="Id" />
-    <div class="form-group">
-        <label asp-for="Stars"></label>
-        <select asp-for="Stars" class="form-control">
-            <option value="1">⭐</option>
-            <option value="2">⭐⭐</option>
-            <option value="3">⭐⭐⭐</option>
-            <option value="4">⭐⭐⭐⭐</option>
-            <option value="5">⭐⭐⭐⭐⭐</option>
-        </select>
-        <span asp-validation-for="Stars" class="text-danger"></span>
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+        }
+
+    .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .card-header {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .card-body {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="card shadow-lg rounded-4">
+        <div class="card-header bg-primary text-white text-center">
+            <h3 class="mb-0">✏️ Edit Rating</h3>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-group mb-3">
+                    <label asp-for="Stars" class="form-label">⭐ Rating</label>
+                    <select asp-for="Stars" class="form-control" required>
+                        <option value="1">⭐</option>
+                        <option value="2">⭐⭐</option>
+                        <option value="3">⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐</option>
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+                    </select>
+                    <span asp-validation-for="Stars" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Feedback" class="form-label">📝 Feedback</label>
+                    <textarea asp-for="Feedback" class="form-control" rows="4" required></textarea>
+                    <span asp-validation-for="Feedback" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success">Update Rating</button>
+                    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="Feedback"></label>
-        <textarea asp-for="Feedback" class="form-control" rows="4"></textarea>
-        <span asp-validation-for="Feedback" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Update</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-</form>
+</div>

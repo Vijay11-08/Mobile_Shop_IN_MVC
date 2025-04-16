@@ -1,19 +1,36 @@
 ﻿@model MobileShopInMVC.Models.Category
 @{
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
+    ViewData["Title"] = "Create Category";
 }
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<h2>Create Category</h2>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg rounded-4">
+                <div class="card-header bg-info text-white text-center">
+                    <h3 class="mb-0">📁 Add New Category</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Create">
+                        <div class="mb-3">
+                            <label asp-for="CategoryName" class="form-label fw-semibold">📌 Category Name</label>
+                            <input asp-for="CategoryName" class="form-control shadow-sm" placeholder="Enter category name" />
+                            <span asp-validation-for="CategoryName" class="text-danger small"></span>
+                        </div>
 
-<form asp-action="Create">
-    <div class="form-group">
-        <label asp-for="CategoryName"></label>
-        <input asp-for="CategoryName" class="form-control" />
-        <span asp-validation-for="CategoryName" class="text-danger"></span>
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label fw-semibold">📝 Description</label>
+                            <textarea asp-for="Description" class="form-control shadow-sm" rows="4" placeholder="Write a short description..."></textarea>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary px-5 py-2 fw-semibold">➕ Create Category</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="Description"></label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-    </div>
-    <input type="submit" value="Create" class="btn btn-primary" />
-</form>
+</div>

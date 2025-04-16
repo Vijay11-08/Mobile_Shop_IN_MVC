@@ -20,6 +20,21 @@ namespace MobileShopInMVC.Controllers
         }
         public IActionResult Dashboard()
         {
+            ViewBag.TotalProducts = 28;
+            ViewBag.TotalOrders = 5;
+            ViewBag.TotalUsers = 4;
+            ViewBag.TotalRevenue = 396000;
+            ViewBag.ProductsInStock = 20;
+            ViewBag.BestSellingProduct = "iPhone 14 Pro Max";
+            ViewBag.RecentOrderCount = 3;
+
+            ViewBag.RecentOrders = new List<dynamic>
+    {
+        new { OrderId = 101, UserName = "Keval", Total = 100000, Date = "2025-04-12", Status = "Completed" },
+        new { OrderId = 102, UserName = "Esha", Total = 3600, Date = "2025-04-16", Status = "Pending" },
+        new { OrderId = 103, UserName = "Tushar", Total = 70000, Date = "2025-04-16", Status = "Shipped" },
+    };
+
             return View();
         }
 

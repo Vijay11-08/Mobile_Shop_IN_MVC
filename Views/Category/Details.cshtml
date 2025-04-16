@@ -4,24 +4,74 @@
     ViewData["Title"] = "Category Details";
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
 }
+<style>
+    .card-header {
+        background-color: #007bff; /* Primary blue color */
+        color: white;
+        text-align: center;
+    }
 
-<h2>Category Details</h2>
+    .card-body {
+        background-color: #f8f9fa;
+        padding: 20px;
+    }
 
-<div>
-    <dl class="row">
-        <dt class="col-sm-2">Category Name</dt>
-        <dd class="col-sm-10">@Model.CategoryName</dd>
+    .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
 
-        <dt class="col-sm-2">Description</dt>
-        <dd class="col-sm-10">@Model.Description</dd>
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+    }
 
-        <dt class="col-sm-2">Created Date</dt>
-        <dd class="col-sm-10">@Model.CreatedDate.ToShortDateString()</dd>
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
 
-        <dt class="col-sm-2">Is Active</dt>
-        <dd class="col-sm-10">@Model.IsActive</dd>
-    </dl>
+    .d-flex {
+        display: flex;
+    }
+
+    .justify-content-between {
+        justify-content: space-between;
+    }
+
+    .mt-4 {
+        margin-top: 1.5rem;
+    }
+
+    .card-body dl dt {
+        font-weight: bold;
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="card shadow-lg rounded-4">
+        <div class="card-header bg-primary text-white text-center">
+            <h3 class="mb-0">🔍 Category Details</h3>
+        </div>
+        <div class="card-body p-4">
+            <dl class="row">
+                <dt class="col-sm-3">Category Name</dt>
+                <dd class="col-sm-9">@Model.CategoryName</dd>
+
+                <dt class="col-sm-3">Description</dt>
+                <dd class="col-sm-9">@Model.Description</dd>
+
+                <dt class="col-sm-3">Created Date</dt>
+                <dd class="col-sm-9">@Model.CreatedDate.ToShortDateString()</dd>
+
+                <dt class="col-sm-3">Is Active</dt>
+                <dd class="col-sm-9">@Model.IsActive</dd>
+            </dl>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a asp-action="Edit" asp-route-id="@Model.CategoryId" class="btn btn-warning">Edit</a>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
 </div>
-
-<a asp-action="Edit" asp-route-id="@Model.CategoryId" class="btn btn-warning">Edit</a>
-<a asp-action="Index" class="btn btn-secondary">Back to List</a>

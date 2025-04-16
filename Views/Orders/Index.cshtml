@@ -2,6 +2,135 @@
 @{
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
 }
+<style>
+    /* General Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f7fa;
+        color: #333;
+    }
+
+    /* Main container */
+    .container {
+        width: 100%;
+        margin: 50px auto;
+        padding: 20px;
+    }
+
+    /* Table Styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        background-color: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    /* Table Head */
+    th {
+        padding: 15px;
+        background-color: #007bff;
+        color: white;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+    }
+
+    tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+
+    /* Action Buttons */
+    .btn {
+        display: inline-block;
+        padding: 8px 16px;
+        font-size: 0.9em;
+        border-radius: 4px;
+        text-decoration: none;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .btn-sm {
+        font-size: 0.85em;
+        padding: 6px 12px;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: white;
+    }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+    .btn-warning {
+        background-color: #ffc107;
+        color: white;
+    }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+    /* Heading */
+    h2 {
+        text-align: center;
+        color: #007bff;
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    /* Empty State Message */
+    .text-muted {
+        font-size: 1.2em;
+        color: #6c757d;
+        text-align: center;
+    }
+
+    /* Responsive Design */
+    @@media screen and (max-width: 768px) {
+        th, td
+
+    {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .btn-sm {
+        font-size: 0.8em;
+        padding: 5px 10px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    }
+</style>
 <h2>Order List</h2>
 
 <table class="table">

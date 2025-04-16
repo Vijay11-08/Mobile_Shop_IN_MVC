@@ -2,35 +2,167 @@
 @{
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
 }
+<style>
+    .card-header {
+        background-color: #007bff; /* Primary blue color */
+        color: white;
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 10px;
+    }
 
-<h2>All Categories</h2>
+    .card-body {
+        background-color: #f8f9fa;
+        padding: 20px;
+    }
 
-<a asp-action="Create" class="btn btn-success">Add New Category</a>
+    .btn {
+        padding: 8px 16px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+    }
 
-<table class="table table-bordered mt-3">
-    <thead>
-        <tr>
-            <th>Category Name</th>
-            <th>Description</th>
-            <th>Created</th>
-            <th>Active</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.CategoryName</td>
-                <td>@item.Description</td>
-                <td>@item.CreatedDate.ToShortDateString()</td>
-                <td>@item.IsActive</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-warning btn-sm">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.CategoryId" class="btn btn-info btn-sm">Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.CategoryId" class="btn btn-danger btn-sm">Delete</a>
-                </td>
-            </tr>
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f1f1f1; /* Light gray hover effect */
+    }
+
+    .thead-light {
+        background-color: #f8f9fa;
+    }
+
+    .table-bordered {
+        border: 1px solid #ddd;
+    }
+
+    /* Adjust the table to look cleaner */
+    .table {
+        width: 100%;
+        margin-top: 15px;
+        table-layout: fixed; /* Ensures content fits well within cells */
+    }
+
+        .table th, .table td {
+            text-align: left;
+            padding: 12px 15px;
+            vertical-align: middle;
+            word-wrap: break-word;
         }
-    </tbody>
-</table>
+
+        .table th {
+            background-color: #f1f1f1;
+            font-weight: bold;
+        }
+
+        .table td {
+            background-color: #ffffff;
+            border-top: 1px solid #ddd;
+        }
+
+        .table tbody tr td {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .table td a {
+            text-decoration: none;
+            padding: 6px 12px;
+            margin: 3px;
+        }
+
+        /* Ensure buttons align in one row, even if there's limited space */
+        .table td .btn {
+            display: inline-block;
+            margin-right: 5px; /* Space between buttons */
+        }
+
+        .table td a:hover {
+            text-decoration: underline;
+        }
+
+    .mt-4 {
+        margin-top: 1.5rem;
+    }
+
+    /* For responsive design */
+    @@media (max-width: 768px) {
+        .table th, .table td
+
+    {
+        padding: 8px;
+    }
+
+    .btn {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    .table td .btn {
+        margin-bottom: 5px;
+        display: block; /* Stack buttons vertically for small screens */
+    }
+
+    }
+</style>
+
+
+<div class="container mt-4">
+    <div class="card shadow-lg rounded-4">
+        <div class="card-header bg-primary text-white text-center">
+            <h3 class="mb-0">📦 All Categories</h3>
+        </div>
+
+        <div class="card-body p-4">
+            <div class="mb-3">
+                <a asp-action="Create" class="btn btn-success">+ Add New Category</a>
+            </div>
+
+            <table class="table table-bordered mt-3 table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Category Name</th>
+                        <th>Description</th>
+                        <th>Created</th>
+                        <th>Active</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CategoryName</td>
+                            <td>@item.Description</td>
+                            <td>@item.CreatedDate.ToShortDateString()</td>
+                            <td>@item.IsActive</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-warning btn-sm">Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.CategoryId" class="btn btn-info btn-sm">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.CategoryId" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

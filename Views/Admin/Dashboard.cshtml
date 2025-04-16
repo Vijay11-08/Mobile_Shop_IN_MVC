@@ -1,4 +1,191 @@
 ﻿@{
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
+    ViewData["Title"] = "Admin Dashboard";
 }
-<h1>Admin</h1>
+
+<div class="container mt-4">
+    <h2 class="mb-4">📊 Admin Dashboard</h2>
+
+    <div class="row g-4">
+        <!-- Total Products -->
+        <div class="col-md-3">
+            <div class="card text-white bg-primary shadow-sm rounded">
+                <div class="card-body">
+                    <h5 class="card-title">📱 Total Products</h5>
+                    <p class="card-text fs-4">@ViewBag.TotalProducts</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Orders -->
+        <div class="col-md-3">
+            <div class="card text-white bg-success shadow-sm rounded">
+                <div class="card-body">
+                    <h5 class="card-title">🛒 Total Orders</h5>
+                    <p class="card-text fs-4">@ViewBag.TotalOrders</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Users -->
+        <div class="col-md-3">
+            <div class="card text-white bg-warning shadow-sm rounded">
+                <div class="card-body">
+                    <h5 class="card-title">👤 Registered Users</h5>
+                    <p class="card-text fs-4">@ViewBag.TotalUsers</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Revenue -->
+        <div class="col-md-3">
+            <div class="card text-white bg-danger shadow-sm rounded">
+                <div class="card-body">
+                    <h5 class="card-title">💸 Revenue</h5>
+                    <p class="card-text fs-4">₹@ViewBag.TotalRevenue</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Extra Stats Row -->
+    <div class="row g-4 mt-4">
+        <div class="col-md-4">
+            <div class="card text-white bg-dark shadow-sm rounded">
+                <div class="card-body">
+                    <h5 class="card-title">📦 Products In Stock</h5>
+                    <p class="card-text fs-5">@ViewBag.ProductsInStock</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-info shadow-sm rounded">
+                <div class="card-body">
+                    <h5 class="card-title">🔥 Best Seller</h5>
+                    <p class="card-text fs-5">@ViewBag.BestSellingProduct</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-secondary shadow-sm rounded">
+                <div class="card-body">
+                    <h5 class="card-title">🕒 Recent Orders</h5>
+                    <p class="card-text fs-5">@ViewBag.RecentOrderCount</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="row mt-5">
+        <!-- Line Chart -->
+        <div class="col-md-6">
+            <div class="card shadow-sm rounded">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0">📈 Sales Overview</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="salesChart" height="150"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pie Chart -->
+        <div class="col-md-6">
+            <div class="card shadow-sm rounded">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0">🧁 Product Category Share</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="categoryChart" height="150"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top 5 Recent Orders -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card shadow-sm rounded">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0">📋 Top 5 Recent Orders</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>User</th>
+                                <th>Total</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var order in ViewBag.RecentOrders)
+                            {
+                                <tr>
+                                    <td>@order.OrderId</td>
+                                    <td>@order.UserName</td>
+                                    <td>₹@order.Total</td>
+                                    <td>@order.Date</td>
+                                    <td>@order.Status</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // Line Chart: Sales Overview
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Monthly Sales (₹)',
+                    data: [10000, 20000, 15000, 30000, 25000, 40000],
+                    backgroundColor: 'rgba(0, 123, 255, 0.1)',
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: value => '₹' + value
+                        }
+                    }
+                }
+            }
+        });
+
+        // Pie Chart: Product Categories
+        const ctx2 = document.getElementById('categoryChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'pie',
+            data: {
+                labels: ['Smartphones', 'Accessories', 'Tablets', 'Others'],
+                datasets: [{
+                    data: [40, 25, 20, 15],
+                    backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545']
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
+}

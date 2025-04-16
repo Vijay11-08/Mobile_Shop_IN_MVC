@@ -1,4 +1,4 @@
-﻿ @model IEnumerable<MobileShopInMVC.Models.Product>
+﻿@model IEnumerable<MobileShopInMVC.Models.Product>
 @{
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
 }
@@ -50,3 +50,103 @@
         }
     </tbody>
 </table>
+
+<style>
+    /* Table styling */
+    .table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+    .table-striped tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .table .img-thumbnail {
+        border-radius: 4px;
+        object-fit: cover;
+    }
+
+    .table td a {
+        text-decoration: none;
+        margin-right: 5px;
+    }
+
+        .table td a:hover {
+            text-decoration: underline;
+        }
+
+    .text-success {
+        color: #28a745;
+    }
+
+    .fw-bold {
+        font-weight: bold;
+    }
+
+    .d-flex {
+        margin-top: 15px;
+    }
+
+    .btn {
+        font-size: 0.875rem;
+        padding: 8px 12px;
+        border-radius: 4px;
+    }
+
+    /* Button spacing */
+    .btn-sm {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    /* Responsive adjustments for smaller screens */
+    @@media (max-width: 768px) {
+        .table th, .table td
+
+    {
+        padding: 8px 10px;
+    }
+
+    .table img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .d-flex {
+        justify-content: center;
+    }
+
+    }
+</style>

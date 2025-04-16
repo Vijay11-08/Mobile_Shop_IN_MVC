@@ -2,26 +2,41 @@
 @{
     ViewData["Title"] = "Submit Rating";
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
-
 }
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<h2>Submit Your Rating</h2>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg rounded-4">
+                <div class="card-header bg-warning text-dark text-center">
+                    <h3 class="mb-0">🌟 Submit Your Rating</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Create" method="post">
+                        <div class="mb-3">
+                            <label asp-for="Stars" class="form-label fw-semibold">Rating (1 to 5 Stars)</label>
+                            <select asp-for="Stars" class="form-select shadow-sm">
+                                <option value="1">⭐</option>
+                                <option value="2">⭐⭐</option>
+                                <option value="3">⭐⭐⭐</option>
+                                <option value="4">⭐⭐⭐⭐</option>
+                                <option value="5">⭐⭐⭐⭐⭐</option>
+                            </select>
+                            <span asp-validation-for="Stars" class="text-danger small"></span>
+                        </div>
 
-<form asp-action="Create" method="post">
-    <div class="form-group">
-        <label asp-for="Stars"></label>
-        <select asp-for="Stars" class="form-control">
-            <option value="1">⭐</option>
-            <option value="2">⭐⭐</option>
-            <option value="3">⭐⭐⭐</option>
-            <option value="4">⭐⭐⭐⭐</option>
-            <option value="5">⭐⭐⭐⭐⭐</option>
-        </select>
-        <span asp-validation-for="Stars" class="text-danger"></span>
+                        <div class="mb-3">
+                            <label asp-for="Feedback" class="form-label fw-semibold">📝 Your Feedback</label>
+                            <textarea asp-for="Feedback" class="form-control shadow-sm" rows="4" placeholder="Write something about your experience..."></textarea>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-warning px-5 py-2 fw-semibold">📩 Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="Feedback"></label>
-        <textarea asp-for="Feedback" class="form-control" rows="4"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>

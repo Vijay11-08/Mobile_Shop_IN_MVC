@@ -121,6 +121,17 @@
 <h2 style="text-align: center; margin: 30px 0; font-size: 32px; color: #333;">🛍️ Shop Products</h2>
 <form asp-action="Shop" method="get" class="d-flex justify-content-center mb-4">
     <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="form-control w-50 me-2" placeholder="🔍 Search for a product..." />
+
+    <select name="priceRange" class="form-select w-25 me-2">
+        <option value="">🔽 Filter by Price</option>
+        <option value="0-10000">Below ₹10,000</option>
+        <option value="10000-20000">₹10,000 - ₹20,000</option>
+        <option value="20000-50000">₹20,000 - ₹50,000</option>
+        <option value="50000-100000">₹50,000 - ₹1,00,000</option>
+        <option value="100000-150000">₹1,00,000 - ₹1,50,000</option>
+        <option value="150000">Above ₹1,50,000</option>
+    </select>
+
     <button type="submit" class="btn btn-primary">Search</button>
 </form>
 

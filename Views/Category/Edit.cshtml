@@ -4,28 +4,85 @@
     ViewData["Title"] = "Edit Category";
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
 }
+<style>
+    .card-header {
+        background-color: #17a2b8; /* Info blue color */
+        color: white;
+        text-align: center;
+    }
 
-<h2>Edit Category</h2>
+    .card-body {
+        background-color: #f8f9fa;
+        padding: 20px;
+    }
 
-<form asp-action="Edit">
-    <input type="hidden" asp-for="CategoryId" />
+    .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
 
-    <div class="form-group">
-        <label asp-for="CategoryName"></label>
-        <input asp-for="CategoryName" class="form-control" />
-        <span asp-validation-for="CategoryName" class="text-danger"></span>
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .form-group label {
+        font-weight: bold;
+    }
+
+    .font-weight-bold {
+        font-weight: bold;
+    }
+
+    .form-check-input {
+        width: 20px;
+        height: 20px;
+    }
+
+    .mt-3 {
+        margin-top: 1rem;
+    }
+
+    .mb-0 {
+        margin-bottom: 0;
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="card shadow-lg rounded-4">
+        <div class="card-header bg-info text-white text-center">
+            <h3 class="mb-0">✏️ Edit Category</h3>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="CategoryId" />
+
+                <div class="form-group">
+                    <label asp-for="CategoryName" class="font-weight-bold"></label>
+                    <input asp-for="CategoryName" class="form-control" />
+                    <span asp-validation-for="CategoryName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description" class="font-weight-bold"></label>
+                    <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="IsActive" class="font-weight-bold">Is Active</label>
+                    <input asp-for="IsActive" type="checkbox" class="form-check-input" />
+                </div>
+
+                <div class="d-flex justify-content-between mt-3">
+                    <button type="submit" class="btn btn-success">Save Changes</button>
+                    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
     </div>
-
-    <div class="form-group">
-        <label asp-for="Description"></label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="IsActive"></label>
-        <input asp-for="IsActive" type="checkbox" class="form-check-input" />
-    </div>
-
-    <input type="submit" value="Save Changes" class="btn btn-primary" />
-    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-</form>
+</div>
